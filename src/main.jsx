@@ -1,10 +1,10 @@
-import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { AppContextProvider } from './context/AppContext';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,7 +12,11 @@ const router = createBrowserRouter([
   },
 ]);
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+  // <StrictMode>
+  <BrowserRouter>
+    <AppContextProvider>
+      <RouterProvider router={router} />
+    </AppContextProvider>
+  </BrowserRouter>
+  // </StrictMode>,
 )

@@ -291,7 +291,7 @@ export const itemsPageStyles = {
   noProductsTitle: "text-xl font-bold text-emerald-100 mb-2",
   noProductsText: "text-emerald-300 mb-6",
   clearSearchButton: "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white cursor-pointer px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-colors",
-  
+
   // ProductCard styles
   productCard: "bg-emerald-900 rounded-2xl overflow-hidden shadow-2xl shadow-emerald-950 hover:shadow-emerald-900/50 transition-all duration-300 hover:-translate-y-1 border-2 border-emerald-700",
   imageContainer: "h-48 relative overflow-hidden bg-emerald-950 flex items-center justify-center",
@@ -313,33 +313,33 @@ export const itemsPageStyles = {
   addButtonArrow: "ml-2 text-xl transform group-hover:translate-x-1 transition-transform"
 };
 
-  export const checkoutStyles = {
-    page: "min-h-screen bg-gradient-to-br from-emerald-900 to-emerald-950",
-    container: "container mx-auto px-4 py-8",
-    backLink: "inline-flex items-center text-emerald-300 hover:text-emerald-100 mb-6 transition-colors",
-    header: "mb-8",
-    mainTitle: "text-4xl md:text-5xl font-bold text-emerald-100 mb-2",
-    subtitle: "text-emerald-300 mb-8",
-    card: "bg-emerald-800/50 backdrop-blur-sm rounded-2xl shadow-2xl shadow-emerald-950 p-6 border border-emerald-700",
-    sectionTitle: "text-xl font-bold text-emerald-100 mb-6 flex items-center",
-    input: "w-full px-4 py-3 rounded-xl bg-emerald-900 text-emerald-100 border border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner",
-    inputError: "border-red-500",
-    radioCard: "flex items-center p-4 border border-emerald-700 rounded-xl cursor-pointer hover:border-emerald-500 transition-colors",
-    cartItem: "flex items-center border-b border-emerald-700/50 pb-4 last:border-0",
-    cartImage: "bg-emerald-800 border-2 border-dashed border-emerald-700 rounded-xl w-16 h-16 mr-4 flex items-center justify-center",
-    summaryCard: "bg-emerald-800/50 border border-emerald-700 rounded-xl p-4",
-    infoCard: "bg-emerald-800/50 border border-emerald-700 rounded-xl p-4",
-    button: "w-full py-3 px-6 rounded-xl font-medium flex items-center justify-center transition-colors shadow-lg shadow-emerald-900/30",
-    submitButton: "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white",
-    disabledButton: "bg-gray-500 cursor-not-allowed",
-    link: "text-emerald-400 hover:text-emerald-200 hover:underline",
-     emptyPage: "min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 to-emerald-950 p-4",
+export const checkoutStyles = {
+  page: "min-h-screen bg-gradient-to-br from-emerald-900 to-emerald-950",
+  container: "container mx-auto px-4 py-8",
+  backLink: "inline-flex items-center text-emerald-300 hover:text-emerald-100 mb-6 transition-colors",
+  header: "mb-8",
+  mainTitle: "text-4xl md:text-5xl font-bold text-emerald-100 mb-2",
+  subtitle: "text-emerald-300 mb-8",
+  card: "bg-emerald-800/50 backdrop-blur-sm rounded-2xl shadow-2xl shadow-emerald-950 p-6 border border-emerald-700",
+  sectionTitle: "text-xl font-bold text-emerald-100 mb-6 flex items-center",
+  input: "w-full px-4 py-3 rounded-xl bg-emerald-900 text-emerald-100 border border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner",
+  inputError: "border-red-500",
+  radioCard: "flex items-center p-4 border border-emerald-700 rounded-xl cursor-pointer hover:border-emerald-500 transition-colors",
+  cartItem: "flex items-center border-b border-emerald-700/50 pb-4 last:border-0",
+  cartImage: "bg-emerald-800 border-2 border-dashed border-emerald-700 rounded-xl w-16 h-16 mr-4 flex items-center justify-center",
+  summaryCard: "bg-emerald-800/50 border border-emerald-700 rounded-xl p-4",
+  infoCard: "bg-emerald-800/50 border border-emerald-700 rounded-xl p-4",
+  button: "w-full py-3 px-6 rounded-xl font-medium flex items-center justify-center transition-colors shadow-lg shadow-emerald-900/30",
+  submitButton: "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white",
+  disabledButton: "bg-gray-500 cursor-not-allowed",
+  link: "text-emerald-400 hover:text-emerald-200 hover:underline",
+  emptyPage: "min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 to-emerald-950 p-4",
   emptyCard: "max-w-md w-full bg-emerald-800/50 backdrop-blur-sm rounded-2xl shadow-2xl shadow-emerald-950 p-8 text-center border border-emerald-700",
   emptyIcon: "text-emerald-400 text-6xl mb-4",
   emptyTitle: "text-2xl font-bold text-emerald-100 mb-2",
   emptyText: "text-emerald-300 mb-6",
   emptyButton: "inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium py-2 px-6 rounded-full transition-colors shadow-lg shadow-emerald-900/30",
-  
+
   // Checkout page styles
   page: "min-h-screen bg-gradient-to-br from-emerald-950 to-emerald-900 p-4 md:p-8",
   container: "max-w-6xl mx-auto",
@@ -358,47 +358,47 @@ export const itemsPageStyles = {
   disabledButton: "opacity-50 cursor-not-allowed",
   submitButton: "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg shadow-emerald-900/30",
   link: "text-emerald-300 hover:text-emerald-100 underline transition",
-  
+
   // Delivery info styles
   deliveryInfo: "mt-8 p-6 bg-amber-500/20 rounded-2xl border border-amber-500/30 backdrop-blur-sm",
   deliveryTitle: "font-bold text-amber-200 flex items-center mb-2",
   deliveryText: "text-amber-100"
-  };
+};
 
- // Styles object matching the requested theme
-  export const ordersPageStyles = {
-    page: "min-h-screen bg-gradient-to-br from-emerald-900 to-emerald-950",
-    container: "container mx-auto px-4 py-8",
-    header: "mb-8 text-center py-8 relative",
-    backLink: "absolute top-5 left-0 flex items-center text-emerald-300 hover:text-emerald-100 cursor-pointer transition-colors",
-    mainTitle: "text-4xl md:text-5xl font-bold text-emerald-100 mt-7",
-    titleSpan: "text-emerald-400 font-playfair",
-    subtitle: "text-emerald-300 mt-4 max-w-2xl mx-auto text-lg",
-    titleDivider: "mt-6 flex justify-center",
-    dividerLine: "w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full",
-    searchContainer: "mb-8 max-w-2xl mx-auto",
-    searchForm: "relative",
-    searchInput: "w-full py-3 px-4 pr-12 rounded-2xl bg-emerald-800 text-emerald-100 border border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner",
-    searchButton: "absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white p-2 rounded-full",
-    ordersTable: "bg-emerald-800/30 backdrop-blur-sm rounded-2xl shadow-2xl shadow-emerald-950 overflow-hidden",
-    tableHeader: "bg-emerald-800/50",
-    tableHeaderCell: "py-4 px-4 text-left text-sm font-semibold text-emerald-300",
-    tableRow: "hover:bg-emerald-900/30 transition-colors",
-    tableCell: "py-4 px-4 text-emerald-100",
-    statusBadge: "px-3 py-1 rounded-full text-xs font-medium",
-    actionButton: "text-sm bg-emerald-600 hover:bg-emerald-500 text-white py-1.5 px-4 rounded-full transition-colors shadow-md shadow-emerald-950/50",
-    modalOverlay: "fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 backdrop-blur-sm",
-    modalContainer: "bg-emerald-900/80 backdrop-blur-md rounded-2xl shadow-2xl shadow-emerald-950 w-full max-w-4xl max-h-[90vh] overflow-y-auto border-2 border-emerald-700",
-    modalHeader: "sticky top-0 bg-emerald-900/90 border-b border-emerald-700 p-6 z-10",
-    modalTitle: "text-2xl font-bold text-emerald-100",
-    modalCloseButton: "text-emerald-300 hover:text-emerald-100 transition-colors",
-    modalBody: "p-6",
-    modalSection: "mb-8",
-    modalSectionTitle: "text-lg font-bold text-emerald-100 mb-4 flex items-center",
-    modalCard: "bg-emerald-800/50 rounded-xl p-4 border border-emerald-700",
-    modalFooter: "sticky bottom-0 bg-emerald-900/90 border-t border-emerald-700 p-6",
-    closeButton: "px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-full transition-colors shadow-lg shadow-emerald-900/30 font-medium"
-  };
+// Styles object matching the requested theme
+export const ordersPageStyles = {
+  page: "min-h-screen bg-gradient-to-br from-emerald-900 to-emerald-950",
+  container: "container mx-auto px-4 py-8",
+  header: "mb-8 text-center py-8 relative",
+  backLink: "absolute top-5 left-0 flex items-center text-emerald-300 hover:text-emerald-100 cursor-pointer transition-colors",
+  mainTitle: "text-4xl md:text-5xl font-bold text-emerald-100 mt-7",
+  titleSpan: "text-emerald-400 font-playfair",
+  subtitle: "text-emerald-300 mt-4 max-w-2xl mx-auto text-lg",
+  titleDivider: "mt-6 flex justify-center",
+  dividerLine: "w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full",
+  searchContainer: "mb-8 max-w-2xl mx-auto",
+  searchForm: "relative",
+  searchInput: "w-full py-3 px-4 pr-12 rounded-2xl bg-emerald-800 text-emerald-100 border border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner",
+  searchButton: "absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white p-2 rounded-full",
+  ordersTable: "bg-emerald-800/30 backdrop-blur-sm rounded-2xl shadow-2xl shadow-emerald-950 overflow-hidden",
+  tableHeader: "bg-emerald-800/50",
+  tableHeaderCell: "py-4 px-4 text-left text-sm font-semibold text-emerald-300",
+  tableRow: "hover:bg-emerald-900/30 transition-colors",
+  tableCell: "py-4 px-4 text-emerald-100",
+  statusBadge: "px-3 py-1 rounded-full text-xs font-medium",
+  actionButton: "text-sm bg-emerald-600 hover:bg-emerald-500 text-white py-1.5 px-4 rounded-full transition-colors shadow-md shadow-emerald-950/50",
+  modalOverlay: "fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 backdrop-blur-sm",
+  modalContainer: "bg-emerald-900/80 backdrop-blur-md rounded-2xl shadow-2xl shadow-emerald-950 w-full max-w-4xl max-h-[90vh] overflow-y-auto border-2 border-emerald-700",
+  modalHeader: "sticky top-0 bg-emerald-900/90 border-b border-emerald-700 p-6 z-10",
+  modalTitle: "text-2xl font-bold text-emerald-100",
+  modalCloseButton: "text-emerald-300 hover:text-emerald-100 transition-colors",
+  modalBody: "p-6",
+  modalSection: "mb-8",
+  modalSectionTitle: "text-lg font-bold text-emerald-100 mb-4 flex items-center",
+  modalCard: "bg-emerald-800/50 rounded-xl p-4 border border-emerald-700",
+  modalFooter: "sticky bottom-0 bg-emerald-900/90 border-t border-emerald-700 p-6",
+  closeButton: "px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-full transition-colors shadow-lg shadow-emerald-900/30 font-medium"
+};
 
 
 // assets/itemsHomeStyles.js

@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-
+    const { user, setUser } = useAuthContext();
+    const handleLogout = () => {
+        setUser(null);
+        setOpen(false);
+        navigate("/");
+    };
     const menuItems = [
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
@@ -12,7 +18,8 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between
+        <nav
+            className="sticky top-0 z-50 flex items-center justify-between
       px-6 md:px-16 lg:px-24 xl:px-32 py-4
       bg-gradient-to-r from-indigo-900/30 via-fuchsia-500/20 to-cyan-400/30
       backdrop-blur-2xl border-b border-white/30
@@ -121,8 +128,19 @@ const Navbar = () => {
                                 <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><NavLink to='/myOrder'>My Orders</NavLink></li>
-                        <li><NavLink to='/logOut'>Logout</NavLink></li>
+                        <li>
+                            <NavLink to="/myOrder" onClick={() => setOpen(false)}>
+                                My Orders
+                            </NavLink>
+                        </li>
+                        {/* <li> */}
+                        <button
+                            onClick={handleLogout}
+                            className="mt-2 px-6 py-2 bg-cyan-600 hover:bg-pink-700 text-white rounded-full w-full"
+                        >
+                            Logout
+                        </button>
+                        {/* </li> */}
                     </ul>
                 </div>
             </div>
@@ -135,8 +153,8 @@ const Navbar = () => {
             >
                 <svg width="21" height="15" viewBox="0 0 21 15" fill="none">
                     <rect width="21" height="1.5" rx=".75" fill="#1F2937" />
-                    <rect x="8" y="6" width="13" height="1.5" rx=".75" fill="#1F2937" />
-                    <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="#1F2937" />
+                    <rect y="6" width="21" height="1.5" rx=".75" fill="#1F2937" />
+                    <rect y="13" width="21" height="1.5" rx=".75" fill="#1F2937" />
                 </svg>
             </button>
 
@@ -150,6 +168,7 @@ const Navbar = () => {
                     <NavLink
                         key={item.name}
                         to={item.path}
+                        onClick={() => setOpen(false)}
                         className={({ isActive }) =>
                             `relative font-medium transition
                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-indigo-600 after:transition-all

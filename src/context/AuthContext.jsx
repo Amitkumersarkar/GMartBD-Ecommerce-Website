@@ -6,9 +6,14 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
+    const [isSeller, setIsSeller] = useState(false);
+
 
     const info = {
-
+        user,
+        setUser,
+        isSeller,
+        setIsSeller
     }
     return <AuthContext.Provider value={info}>
         {children}

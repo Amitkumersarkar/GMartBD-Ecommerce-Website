@@ -152,9 +152,9 @@ const Navbar = () => {
                 className="sm:hidden p-2 rounded-lg hover:bg-white/40 transition"
             >
                 <svg width="21" height="15" viewBox="0 0 21 15" fill="none">
-                    <rect width="21" height="1.5" rx=".75" fill="#1F2937" />
-                    <rect y="6" width="21" height="1.5" rx=".75" fill="#1F2937" />
-                    <rect y="13" width="21" height="1.5" rx=".75" fill="#1F2937" />
+                    <rect width="21" height="1.5" rx=".75" fill="#FFFFFF" />
+                    <rect y="6" width="21" height="1.5" rx=".75" fill="#FFFFFF" />
+                    <rect y="13" width="21" height="1.5" rx=".75" fill="#FFFFFF" />
                 </svg>
             </button>
 

@@ -32,18 +32,24 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden sm:flex items-center gap-8">
-                    {["Home", "About", "Contact"].map((item) => (
-                        <a
-                            key={item}
-                            href="#"
-                            className="relative font-medium text-gray-900 transition
-              hover:text-indigo-600
-              after:absolute after:left-0 after:-bottom-1 after:h-[2px]
-              after:w-0 after:bg-indigo-600 after:transition-all
-              hover:after:w-full"
+                    {[
+                        // { name: "Home", path: "/" },
+                        { name: "About", path: "/about" },
+                        { name: "Contact", path: "/contact" },
+                        { name: "All Product", path: "/allProduct" }
+                    ].map((item) => (
+                        <NavLink
+                            key={item.name}
+                            to={item.path}
+                            className={({ isActive }) =>
+                                `relative font-medium transition
+        after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-indigo-600 after:transition-all
+        hover:after:w-full
+        ${isActive ? "text-indigo-600" : "text-gray-900"}`
+                            }
                         >
-                            {item}
-                        </a>
+                            {item.name}
+                        </NavLink>
                     ))}
 
                     {/* Search */}
@@ -122,14 +128,24 @@ const Navbar = () => {
           bg-gradient-to-b from-white/90 to-indigo-50/90 backdrop-blur-lg shadow-xl
           py-5 flex-col items-start gap-3 px-6 text-sm md:hidden`}
                 >
-                    {["Home", "About", "Contact"].map((item) => (
-                        <a
-                            key={item}
-                            href="#"
-                            className="w-full py-1 font-medium text-gray-800 hover:text-indigo-600 transition"
+                    {[
+                        { name: "Home", path: "/" },
+                        { name: "About", path: "/about" },
+                        { name: "Contact", path: "/contact" },
+                        { name: "All Product", path: "/allProduct" },
+                    ].map((item) => (
+                        <NavLink
+                            key={item.name}
+                            to={item.path}
+                            className={({ isActive }) =>
+                                `relative font-medium transition
+        after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-indigo-600 after:transition-all
+        hover:after:w-full
+        ${isActive ? "text-indigo-600" : "text-gray-900"}`
+                            }
                         >
-                            {item}
-                        </a>
+                            {item.name}
+                        </NavLink>
                     ))}
 
                     <button

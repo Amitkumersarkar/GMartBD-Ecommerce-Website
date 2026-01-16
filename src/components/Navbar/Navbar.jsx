@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -13,9 +14,21 @@ const Navbar = () => {
         shadow-[0_10px_30px_rgba(0,0,0,0.15)]
         transition-all duration-300"
             >
-                <a href="/" className="hover:scale-105 transition font-bold text-xl">
-                    LOGO
-                </a>
+                <NavLink
+                    to="/"
+                    className="flex items-center gap-1 hover:scale-105 transition-transform duration-300 font-extrabold text-2xl bg-clip-text text-transparent
+  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+                >
+                    <img
+                        src="/src/assets/favicon.svg"
+                        alt="Logo"
+                        className="w-8 h-8 object-contain"
+                    />
+                    <div className=" leading-none">
+                        <span>Mart.</span>
+                        <span className="text-xs text-gray-500">bd</span>
+                    </div>
+                </NavLink>
 
                 {/* Desktop Menu */}
                 <div className="hidden sm:flex items-center gap-8">

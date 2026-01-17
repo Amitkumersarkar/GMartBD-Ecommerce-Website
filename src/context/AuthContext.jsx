@@ -1,9 +1,10 @@
-// src/context/AuthContext.jsx
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [isSeller, setIsSeller] = useState(false);
 

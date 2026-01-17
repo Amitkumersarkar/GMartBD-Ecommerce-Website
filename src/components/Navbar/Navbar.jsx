@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
@@ -7,11 +7,24 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const { user, setUser, setShowUserLogin } = useAuthContext();
     const navigate = useNavigate();
+    const profileRef = useRef(null);
+    const [profileOpen, setProfileOpen] = useState(false);
 
     const handleLogOut = () => {
         setUser(null);
         navigate("/");
+        setProfileOpen(false);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileRef.current && !profileRef.current.contains(event.target)) {
+                setProfileOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between
@@ -26,7 +39,7 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden sm:flex items-center gap-8 text-white/90">
-                <NavLink className="hover:text-white transition" to="/">Home</NavLink>
+                {/* <NavLink className="hover:text-white transition" to="/">Home</NavLink> */}
                 <NavLink className="hover:text-white transition" to="/about">About</NavLink>
                 <NavLink className="hover:text-white transition" to="/contact">Contact</NavLink>
                 <NavLink className="hover:text-white transition" to="/all-products">All Products</NavLink>
@@ -61,33 +74,31 @@ const Navbar = () => {
                         Login
                     </button>
                 ) : (
-                    <div className="relative group">
+                    <div className="relative" ref={profileRef}>
                         <img
                             src={assets.profile_icon}
                             alt="profile"
                             className="w-10 cursor-pointer rounded-full ring-2 ring-white/30 hover:ring-indigo-400 transition"
+                            onClick={() => setProfileOpen(!profileOpen)}
                         />
 
-                        <ul className="hidden group-hover:block absolute top-12 right-0 bg-gradient-to-br from-white via-indigo-50 to-sky-50 shadow-2xl border border-white/40 py-2 w-36 rounded-xl text-sm text-gray-700 backdrop-blur-md">
-
-                            <li
-                                onClick={() => navigate("/my-orders")}
-                                className="relative px-3 py-2 cursor-pointer group/item overflow-hidden"
-                            >
-                                <span className="relative z-10">My Orders</span>
-                                <span className="absolute left-0 bottom-1 h-[2px] w-0 bg-indigo-500 transition-all duration-300 group-hover/item:w-full"></span>
-                            </li>
-
-                            <li
-                                onClick={handleLogOut}
-                                className="relative px-3 py-2 cursor-pointer group/item overflow-hidden text-red-600"
-                            >
-                                <span className="relative z-10">LogOut</span>
-                                <span className="absolute left-0 bottom-1 h-[2px] w-0 bg-red-500 transition-all duration-300 group-hover/item:w-full"></span>
-                            </li>
-                        </ul>
+                        {profileOpen && (
+                            <ul className="absolute top-12 right-0 bg-gradient-to-br from-white via-indigo-50 to-sky-50 shadow-2xl border border-white/40 py-2 w-36 rounded-xl text-sm text-gray-700 backdrop-blur-md">
+                                <li
+                                    onClick={() => { navigate("/my-orders"); setProfileOpen(false); }}
+                                    className="relative px-3 py-2 cursor-pointer group/item overflow-hidden hover:bg-indigo-100 rounded-md"
+                                >
+                                    My Orders
+                                </li>
+                                <li
+                                    onClick={handleLogOut}
+                                    className="relative px-3 py-2 cursor-pointer group/item overflow-hidden text-red-600 hover:bg-red-100 rounded-md"
+                                >
+                                    LogOut
+                                </li>
+                            </ul>
+                        )}
                     </div>
-
                 )}
             </div>
 
@@ -96,13 +107,12 @@ const Navbar = () => {
                 <img src={assets.menu_icon} alt="menu" className="w-7 opacity-90 invert brightness-10" />
             </button>
 
-            {/* Mobile Menu (Small) */}
+            {/* Mobile Menu */}
             {open && (
                 <div className="absolute top-[60px] right-2 w-[220px]
                 bg-white/95 backdrop-blur shadow-xl py-3
                 flex flex-col gap-2 px-4 text-sm sm:hidden rounded-xl">
 
-                    {/* Search (Mobile) */}
                     <div className="flex items-center gap-2 border border-gray-200 px-2 rounded-full bg-gray-50">
                         <input
                             className="py-1 w-full bg-transparent outline-none placeholder-gray-400 text-xs"
@@ -113,13 +123,11 @@ const Navbar = () => {
                     </div>
 
                     <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
-
                     {user && (
                         <NavLink to="/my-orders" onClick={() => setOpen(false)}>
                             My Orders
                         </NavLink>
                     )}
-
                     <NavLink to="/all-products" onClick={() => setOpen(false)}>All Products</NavLink>
                     <NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink>
 

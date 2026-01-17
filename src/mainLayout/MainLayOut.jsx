@@ -1,14 +1,20 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
+import Home from "../components/HomePage/Home";
 
 const MainLayOut = () => {
-    // const { pathname } = useLocation();
-    // const isSellerPath = pathname.includes("seller");
+    const { pathname } = useLocation();
+    const isSellerPath = pathname.includes("seller");
 
     return (
         <div>
-            <Navbar />
-            <Outlet />
+            {isSellerPath ? null : <Navbar />}
+            {/* <Outlet /> */}
+            <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
+                <Routes>
+                    <Route path='/' element={<Home></Home>}></Route>
+                </Routes>
+            </div>
         </div>
     );
 };

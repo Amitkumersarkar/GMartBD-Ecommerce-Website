@@ -27,11 +27,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between
-        px-6 md:px-16 lg:px-24 xl:px-32 py-4
-        bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60
-        backdrop-blur-xl border-b border-white/10
-        shadow-lg">
+        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
 
             <NavLink to="/" onClick={() => setOpen(false)}>
                 <img src={assets.logo} alt="logo" className="h-9" />
@@ -40,9 +36,25 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden sm:flex items-center gap-8 text-white/90">
                 {/* <NavLink className="hover:text-white transition" to="/">Home</NavLink> */}
-                <NavLink className="hover:text-white transition" to="/about">About</NavLink>
-                <NavLink className="hover:text-white transition" to="/contact">Contact</NavLink>
-                <NavLink className="hover:text-white transition" to="/all-products">All Products</NavLink>
+                <NavLink
+                    to="/about"
+                    className="relative hover:text-white transition after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+                    About
+                </NavLink>
+
+                <NavLink
+                    to="/contact"
+                    className="relative hover:text-white transition after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                >
+                    Contact
+                </NavLink>
+
+                <NavLink
+                    to="/all-products"
+                    className="relative hover:text-white transition after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100" >
+                    All Products
+                </NavLink>
+
 
                 {/* Search Bar (Desktop) */}
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-white/50 px-3 rounded-full bg-white/10">
@@ -67,10 +79,7 @@ const Navbar = () => {
                 {!user ? (
                     <button
                         onClick={() => setShowUserLogin(true)}
-                        className="px-8 py-2 rounded-full text-white
-                        bg-gradient-to-r from-indigo-500 to-sky-500
-                        hover:from-indigo-600 hover:to-sky-600 transition"
-                    >
+                        className="px-8 py-2 rounded-full text-white bg-gradient-to-r from-indigo-500 to-sky-500  hover:from-indigo-600 hover:to-sky-600 transition" >
                         Login
                     </button>
                 ) : (
@@ -109,9 +118,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {open && (
-                <div className="absolute top-[60px] right-2 w-[220px]
-                bg-white/95 backdrop-blur shadow-xl py-3
-                flex flex-col gap-2 px-4 text-sm sm:hidden rounded-xl">
+                <div className="absolute top-[60px] right-2 w-[220px] bg-white/95 backdrop-blur shadow-xl py-3 flex flex-col gap-2 px-4 text-sm sm:hidden rounded-xl">
 
                     <div className="flex items-center gap-2 border border-gray-200 px-2 rounded-full bg-gray-50">
                         <input

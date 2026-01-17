@@ -1,18 +1,21 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-    const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    // const navigate = useNavigate();
+    const [user, setUser] = useState(true);
     const [isSeller, setIsSeller] = useState(false);
+    const [showUserLogin, setShowUserLogin] = useState(false);
 
     const value = {
         user,
         setUser,
         isSeller,
         setIsSeller,
+        showUserLogin,
+        setShowUserLogin
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

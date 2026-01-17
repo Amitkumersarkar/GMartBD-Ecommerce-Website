@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 const Navbar2 = () => {
     const [open, setOpen] = useState(false);
@@ -8,7 +8,7 @@ const Navbar2 = () => {
     const handleLogout = () => {
         setUser(null);
         setOpen(false);
-        navigate("/");
+        Navigate("/");
     };
 
     const menuItems = [

@@ -34,6 +34,15 @@ export const AuthContextProvider = ({ children }) => {
         toast.success("Added to the cart")
     }
 
+    // update cart item quantity
+    const updateCartItem = (itemId, quantity) => {
+        let cartData = structuredClone(cartItems);
+        cartData[itemId] = quantity;
+        setCartItems(cartData)
+        toast.success("Cart Updated")
+
+    }
+
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -46,7 +55,9 @@ export const AuthContextProvider = ({ children }) => {
         showUserLogin,
         setShowUserLogin,
         products,
-        currency
+        currency,
+        addToCart,
+        updateCartItem
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,3 +1,4 @@
+import BestSeller from "../../pages/BestSeller/BestSeller";
 import Categories from "../../pages/Categories/Categories";
 import Hero from "../HeroSection/Hero";
 
@@ -7,6 +8,7 @@ const Home = () => {
             <div className="mt-10">
                 <Hero />
                 <Categories></Categories>
+                <BestSeller></BestSeller>
             </div>
         </div>
     );

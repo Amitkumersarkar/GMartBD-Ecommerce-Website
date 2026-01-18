@@ -1,13 +1,26 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { dummyProducts } from "../assets/assets";
 // import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+
+    const currency = import.meta.VITE_CURRENCY;
+
     // const navigate = useNavigate();
     const [user, setUser] = useState(true);
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
+    const [products, setProducts] = useState([]);
+
+    const fetchProducts = async () => {
+        setProducts(dummyProducts)
+    }
+
+    useEffect(() => {
+        fetchProducts()
+    }, [])
 
     const value = {
         user,
@@ -15,7 +28,8 @@ export const AuthContextProvider = ({ children }) => {
         isSeller,
         setIsSeller,
         showUserLogin,
-        setShowUserLogin
+        setShowUserLogin,
+        products
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

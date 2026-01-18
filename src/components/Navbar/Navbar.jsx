@@ -87,7 +87,7 @@ const Navbar = () => {
                         <img
                             src={assets.profile_icon}
                             alt="profile"
-                            className="w-10 cursor-pointer rounded-full ring-2 ring-white/30 hover:ring-indigo-400 transition"
+                            className="w-10 cursor-pointer rounded-full ring-2 ring-white/80 hover:ring-pink-400 transition"
                             onClick={() => setProfileOpen(!profileOpen)}
                         />
 

@@ -73,6 +73,7 @@ export const AuthContextProvider = ({ children }) => {
         products,
         currency,
         addToCart,
+        cartItems,
         updateCartItem,
         removeFromCart
     };

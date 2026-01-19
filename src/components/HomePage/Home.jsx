@@ -1,5 +1,6 @@
 import BestSeller from "../../pages/BestSeller/BestSeller";
 import Categories from "../../pages/Categories/Categories";
+import BottomBanner from "../BottomBanner/BottomBanner";
 import Hero from "../HeroSection/Hero";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
                 <Hero />
                 <Categories></Categories>
                 <BestSeller></BestSeller>
+                <BottomBanner></BottomBanner>
             </div>
         </div>
     );

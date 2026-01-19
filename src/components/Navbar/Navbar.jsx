@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -9,6 +9,8 @@ const Navbar = () => {
     const navigate = useNavigate();
     const profileRef = useRef(null);
     const [profileOpen, setProfileOpen] = useState(false);
+    const location = useLocation();
+
 
     const handleLogOut = () => {
         setUser(null);
@@ -26,8 +28,14 @@ const Navbar = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        setOpen(false);
+    }, [location.pathname]);
+
+
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
+        // <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
+        <nav className="relative sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
 
             <NavLink to="/" onClick={() => setOpen(false)}>
                 <img src={assets.logo} alt="logo" className="h-9" />

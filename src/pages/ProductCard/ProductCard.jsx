@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
                     </p>
                     <div onClick={(e) => { e.stopPropagation(); }} className="text-pink-500">
                         {!cartItems[product._id] ? (
-                            <button className="flex items-center justify-center gap-1 bg-pink-100 border border-pink-300 md:w-[80px] w-[64px] h-[34px] rounded text-pink-600 " onClick={() => addToCart(product._id)}>
+                            <button className="flex items-center justify-center gap-1 bg-pink-100 border border-pink-300 md:w-[80px] w-[64px] h-[34px] rounded text-pink-600 cursor-pointer " onClick={() => addToCart(product._id)}>
                                 <img src={assets.cart_icon} alt="cartIcon" />
                                 Add
                             </button>

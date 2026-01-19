@@ -12,7 +12,8 @@ const BestSeller = () => {
                 Best Sellers
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 mt-6">
+            {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 mt-6"> */}
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 md:gap-6 mt-6">
                 {products
                     .filter((product) => product.inStock)
                     .slice(0, 5)

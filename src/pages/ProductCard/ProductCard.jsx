@@ -30,19 +30,19 @@ const ProductCard = ({ product }) => {
                     <p className="md:text-xl text-base font-medium text-pink-500">
                         {currency} ${product.offerPrice}{""} <span className="text-gray-500/60 md:text-sm text-xs line-through">{currency}${product.price}</span>
                     </p>
-                    <div className="text-pink-500">
+                    <div onClick={(e) => { e.stopPropagation(); }} className="text-pink-500">
                         {!cartItems[product._id] ? (
-                            <button className="flex items-center justify-center gap-1 bg-pink-100 border border-pink-300 md:w-[80px] w-[64px] h-[34px] rounded text-pink-600 " onClick={() => setCount(1)}>
+                            <button className="flex items-center justify-center gap-1 bg-pink-100 border border-pink-300 md:w-[80px] w-[64px] h-[34px] rounded text-pink-600 " onClick={() => addToCart(product._id)}>
                                 <img src={assets.cart_icon} alt="cartIcon" />
                                 Add
                             </button>
                         ) : (
                             <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-pink-500/25 rounded select-none">
-                                <button onClick={() => setCount((prev) => Math.max(prev - 1, 0))} className="cursor-pointer text-md px-2 h-full">
+                                <button onClick={() => { removeFromCart(product._id) }} className="cursor-pointer text-md px-2 h-full">
                                     -
                                 </button>
                                 <span className="w-5 text-center">{cartItems[product._id]}</span>
-                                <button onClick={() => setCount((prev) => prev + 1)} className="cursor-pointer text-md px-2 h-full">
+                                <button onClick={() => { addToCart(product._id) }} className="cursor-pointer text-md px-2 h-full">
                                     +
                                 </button>
                             </div>

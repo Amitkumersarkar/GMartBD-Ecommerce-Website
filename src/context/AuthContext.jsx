@@ -43,6 +43,22 @@ export const AuthContextProvider = ({ children }) => {
 
     }
 
+    // remove product from cart
+    const removeFromCart = (itemId) => {
+        let cartData = structuredClone(cartItems);
+        if (cartData[itemId]) {
+            cartData[itemId] -= 1;
+            if (cartData[itemId] === 0) {
+                delete cartData[itemId];
+
+            }
+        }
+        toast.success("Remove from cart")
+        setCartItems(cartData)
+    }
+
+
+    // fetch products
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -57,7 +73,8 @@ export const AuthContextProvider = ({ children }) => {
         products,
         currency,
         addToCart,
-        updateCartItem
+        updateCartItem,
+        removeFromCart
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

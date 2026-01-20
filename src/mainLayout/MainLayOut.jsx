@@ -2,6 +2,7 @@ import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Home from "../components/HomePage/Home";
 import { Toaster } from "react-hot-toast";
+import Footer from "../components/Footer/Footer";
 
 const MainLayOut = () => {
     const { pathname } = useLocation();
@@ -18,6 +19,7 @@ const MainLayOut = () => {
                     <Route path='/' element={<Home></Home>}></Route>
                 </Routes>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -19,7 +19,9 @@ const MainLayOut = () => {
                     <Route path='/' element={<Home></Home>}></Route>
                 </Routes>
             </div>
-            <Footer></Footer>
+            {
+                !isSellerPath && <Footer></Footer>
+            }
         </div>
     );
 };

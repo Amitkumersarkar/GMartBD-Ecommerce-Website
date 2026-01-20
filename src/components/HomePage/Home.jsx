@@ -1,6 +1,7 @@
 import BestSeller from "../../pages/BestSeller/BestSeller";
 import Categories from "../../pages/Categories/Categories";
 import BottomBanner from "../BottomBanner/BottomBanner";
+import Footer from "../Footer/Footer";
 import Hero from "../HeroSection/Hero";
 import NewsLetter from "../NewsLetter/NewsLetter";
 
@@ -13,6 +14,7 @@ const Home = () => {
                 <BestSeller></BestSeller>
                 <BottomBanner></BottomBanner>
                 <NewsLetter></NewsLetter>
+                <Footer></Footer>
             </div>
         </div>
     );

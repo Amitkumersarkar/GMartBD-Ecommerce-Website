@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <p className="py-4 text-center text-xs sm:text-sm md:text-base text-gray-500/80">
+            <p className="py-4 text-center text-xs sm:text-sm md:text-base text-gray-500">
                 Copyright 2026 © G-Mart<span className="text-xs">.bd</span> All Rights Reserved.
             </p>
         </div>

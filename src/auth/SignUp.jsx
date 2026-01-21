@@ -46,7 +46,7 @@ const SignUp = () => {
                     </div>
 
                     <button type="submit" className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity">
-                        Login
+                        SignIn
                     </button>
                     <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <a className="text-indigo-400 hover:underline" href="#">Sign up</a></p>
                 </form>

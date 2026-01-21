@@ -12,7 +12,10 @@ const SignIn = () => {
         const { name, value } = e.target;
         setFromData(prev => ({ ...prev, [name]: value }))
     }
-    const
+
+    const handleSubmit = () => {
+        e.preventDefault();
+    }
     return (
         <form
             onSubmit={handleSubmit}

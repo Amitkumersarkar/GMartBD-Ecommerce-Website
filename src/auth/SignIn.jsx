@@ -1,6 +1,18 @@
+import { useState } from "react";
 
 const SignIn = () => {
+    const [state, setState] = useState('login');
+    const [formData, setFromData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
 
+    const handleFrom = (e) => {
+        const { name, value } = e.target;
+        setFromData(prev => ({ ...prev, [name]: value }))
+    }
+    const
     return (
         <form
             onSubmit={handleSubmit}

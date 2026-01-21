@@ -1,6 +1,6 @@
-import React from 'react';
 
 const SignUp = () => {
+
     return (
         <div className="flex h-[700px] w-full">
             <div className="w-full hidden md:inline-block">
@@ -10,8 +10,8 @@ const SignUp = () => {
             <div className="w-full flex flex-col items-center justify-center">
 
                 <form className="md:w-96 w-80 flex flex-col items-center justify-center">
-                    <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
-                    <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
+                    <h2 className="text-4xl text-gray-900 font-medium">Sign Up</h2>
+                    <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please SignUp to continue</p>
 
                     <button type="button" className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full">
                         <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleLogo.svg" alt="googleLogo" />
@@ -19,7 +19,7 @@ const SignUp = () => {
 
                     <div className="flex items-center gap-4 w-full my-5">
                         <div className="w-full h-px bg-gray-300/90"></div>
-                        <p className="w-full text-nowrap text-sm text-gray-500/90">or sign in with email</p>
+                        <p className="w-full text-nowrap text-sm text-gray-500/90">or sign up with email</p>
                         <div className="w-full h-px bg-gray-300/90"></div>
                     </div>
 

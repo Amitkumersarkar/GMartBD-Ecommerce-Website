@@ -2,56 +2,52 @@
 const SignIn = () => {
 
     return (
-        <div className="flex h-[700px] w-full">
-            <div className="w-full hidden md:inline-block">
-                <img className="h-full" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/leftSideImage.png" alt="leftSideImage" />
+        <form
+            onSubmit={handleSubmit}
+            className="w-full sm:w-87.5 text-center bg-white/6 border border-white/10 rounded-2xl px-8">
+            <h1 className="text-white text-3xl mt-10 font-medium">
+                {state === "login" ? "Login" : "Sign up"}
+            </h1>
+
+            <p className="text-gray-400 text-sm mt-2">Please sign in to continue</p>
+
+            {state !== "login" && (
+                <div className="flex items-center mt-6 w-full bg-white/5 ring-2 ring-white/10 focus-within:ring-indigo-500/60 h-12 rounded-full overflow-hidden pl-6 gap-2 transition-all ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white/60" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg>
+                    <input type="text" name="name" placeholder="Name" className="w-full bg-transparent text-white placeholder-white/60 border-none outline-none " value={formData.name} onChange={handleChange} required />
+                </div>
+            )}
+
+            <div className="flex items-center w-full mt-4 bg-white/5 ring-2 ring-white/10 focus-within:ring-indigo-500/60 h-12 rounded-full overflow-hidden pl-6 gap-2 transition-all ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white/75" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /> </svg>
+                <input type="email" name="email" placeholder="Email id" className="w-full bg-transparent text-white placeholder-white/60 border-none outline-none " value={formData.email} onChange={handleChange} required />
             </div>
 
-            <div className="w-full flex flex-col items-center justify-center">
-
-                <form className="md:w-96 w-80 flex flex-col items-center justify-center">
-                    <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
-                    <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
-
-                    <button type="button" className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleLogo.svg" alt="googleLogo" />
-                    </button>
-
-                    <div className="flex items-center gap-4 w-full my-5">
-                        <div className="w-full h-px bg-gray-300/90"></div>
-                        <p className="w-full text-nowrap text-sm text-gray-500/90">or sign in with email</p>
-                        <div className="w-full h-px bg-gray-300/90"></div>
-                    </div>
-
-                    <div className="flex items-center w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
-                        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M0 .55.571 0H15.43l.57.55v9.9l-.571.55H.57L0 10.45zm1.143 1.138V9.9h13.714V1.69l-6.503 4.8h-.697zM13.749 1.1H2.25L8 5.356z" fill="#6B7280" />
-                        </svg>
-                        <input type="email" placeholder="Email id" className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full" required />
-                    </div>
-
-                    <div className="flex items-center mt-6 w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
-                        <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 8.5c0-.938-.729-1.7-1.625-1.7h-.812V4.25C10.563 1.907 8.74 0 6.5 0S2.438 1.907 2.438 4.25V6.8h-.813C.729 6.8 0 7.562 0 8.5v6.8c0 .938.729 1.7 1.625 1.7h9.75c.896 0 1.625-.762 1.625-1.7zM4.063 4.25c0-1.406 1.093-2.55 2.437-2.55s2.438 1.144 2.438 2.55V6.8H4.061z" fill="#6B7280" />
-                        </svg>
-                        <input type="password" placeholder="Password" className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full" required />
-                    </div>
-
-                    <div className="w-full flex items-center justify-between mt-8 text-gray-500/80">
-                        <div className="flex items-center gap-2">
-                            <input className="h-5" type="checkbox" id="checkbox" />
-                            <label className="text-sm" htmlFor="checkbox">Remember me</label>
-                        </div>
-                        <a className="text-sm underline" href="#">Forgot password?</a>
-                    </div>
-
-                    <button type="submit" className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity">
-                        Login
-                    </button>
-                    <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <a className="text-indigo-400 hover:underline" href="#">Sign up</a></p>
-                </form>
+            <div className=" flex items-center mt-4 w-full bg-white/5 ring-2 ring-white/10 focus-within:ring-indigo-500/60 h-12 rounded-full overflow-hidden pl-6 gap-2 transition-all ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white/75" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /> </svg>
+                <input type="password" name="password" placeholder="Password" className="w-full bg-transparent text-white placeholder-white/60 border-none outline-none" value={formData.password} onChange={handleChange} required />
             </div>
-        </div>
+
+            <div className="mt-4 text-left">
+                <button className="text-sm text-indigo-400 hover:underline">
+                    Forget password?
+                </button>
+            </div>
+
+            <button type="submit" className="mt-2 w-full h-11 rounded-full text-white bg-indigo-600 hover:bg-indigo-500 transition " >
+                {state === "login" ? "Login" : "Sign up"}
+            </button>
+
+            <p onClick={() => setState(prev => prev === "login" ? "register" : "login")} className="text-gray-400 text-sm mt-3 mb-11 cursor-pointer" >
+                {state === "login" ? "Don't have an account?" : "Already have an account?"}
+                <span className="text-indigo-400 hover:underline ml-1">click here</span>
+            </p>
+        </form>
+            {/* Soft Backdrop*/ }
+    <div className='fixed inset-0 -z-1 pointer-events-none'>
+        <div className='absolute left-1/2 top-20 -translate-x-1/2 w-245 h-115 bg-linear-to-tr from-indigo-800/35 to-transparent rounded-full blur-3xl' />
+        <div className='absolute right-12 bottom-10 w-105 h-55 bg-linear-to-bl from-indigo-700/35 to-transparent rounded-full blur-2xl' />
+    </div>
     );
 };
 

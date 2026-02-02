@@ -11,9 +11,7 @@ const MainLayOut = () => {
     return (
         <div>
             {isSellerPath ? null : <Navbar />}
-            {/* react hot-tost message */}
             <Toaster></Toaster>
-            {/* <Outlet /> */}
             <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
                 <Routes>
                     <Route path='/' element={<Home></Home>}></Route>

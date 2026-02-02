@@ -16,12 +16,10 @@ export const AuthContextProvider = ({ children }) => {
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
-    // fetch all dummyProducts here
     const fetchProducts = async () => {
         setProducts(dummyProducts)
     }
 
-    // Add products to the cart 
     const addToCart = (itemId) => {
         let cartData = structuredClone(cartItems);
         if (cartData[itemId]) {
@@ -34,7 +32,6 @@ export const AuthContextProvider = ({ children }) => {
         toast.success("Added to the cart")
     }
 
-    // update cart item quantity
     const updateCartItem = (itemId, quantity) => {
         let cartData = structuredClone(cartItems);
         cartData[itemId] = quantity;
@@ -43,7 +40,6 @@ export const AuthContextProvider = ({ children }) => {
 
     }
 
-    // remove product from cart
     const removeFromCart = (itemId) => {
         let cartData = structuredClone(cartItems);
         if (cartData[itemId]) {
@@ -57,8 +53,6 @@ export const AuthContextProvider = ({ children }) => {
         setCartItems(cartData)
     }
 
-
-    // fetch products
     useEffect(() => {
         fetchProducts()
     }, [])

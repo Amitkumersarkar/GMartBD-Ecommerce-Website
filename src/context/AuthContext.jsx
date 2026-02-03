@@ -1,19 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
-
-// import { useNavigate } from "react-router-dom";
-
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
     const currency = import.meta.VITE_CURRENCY;
 
-    // const navigate = useNavigate();
     const [user, setUser] = useState(true);
     const [isSeller, setIsSeller] = useState(false);
-    const [showUserLogin, setShowUserLogin] = useState(false);
+    // const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const fetchProducts = async () => {
@@ -62,8 +58,8 @@ export const AuthContextProvider = ({ children }) => {
         setUser,
         isSeller,
         setIsSeller,
-        showUserLogin,
-        setShowUserLogin,
+        // showUserLogin,
+        // setShowUserLogin,
         products,
         currency,
         addToCart,

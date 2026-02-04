@@ -1,5 +1,54 @@
-const SignUp = () => {
+import { useState } from "react";
 
+const SignUp = () => {
+    const [state, setState] = useState("login");
+    const formRef = useRef(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const form = formRef.current;
+        const name = form.name?.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value.trim();
+
+        if (state !== "login" && !name) {
+            toast.error("Name is required");
+            return;
+        }
+
+        if (!email) {
+            toast.error("Email is required");
+            return;
+        }
+
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            toast.error("Invalid email format");
+            return;
+        }
+
+        if (!password) {
+            toast.error("Password is required");
+            return;
+        }
+
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters");
+            return;
+        }
+
+        toast.success(
+            state === "login" ? "Login successful!" : "Account created successfully!"
+        );
+
+        console.log({ name, email, password });
+        form.reset();
+    };
+
+    const toggleState = () => {
+        setState((prev) => (prev === "login" ? "register" : "login"));
+        formRef.current?.reset();
+    };
     return (
         <div className="min-h-screen flex items-center justify-center bg-white">
             <form

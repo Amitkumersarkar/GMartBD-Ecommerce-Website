@@ -34,7 +34,6 @@ const Navbar = () => {
 
 
     return (
-        // <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
         <nav className="relative sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
 
             <NavLink to="/" onClick={() => setOpen(false)}>

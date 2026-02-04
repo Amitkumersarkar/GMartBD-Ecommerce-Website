@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Home from "../components/HomePage/Home";
 import { Toaster } from "react-hot-toast";

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ const Navbar = () => {
         setUser(null);
         navigate("/");
         setProfileOpen(false);
+        toast.success('Logout successful');
     };
 
     useEffect(() => {

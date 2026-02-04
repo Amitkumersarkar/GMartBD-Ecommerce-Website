@@ -12,6 +12,8 @@ export const AuthContextProvider = ({ children }) => {
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
+    const [searchQuery, setSearchQuery] = useState();
+
     const fetchProducts = async () => {
         setProducts(dummyProducts)
     }
@@ -65,7 +67,9 @@ export const AuthContextProvider = ({ children }) => {
         addToCart,
         cartItems,
         updateCartItem,
-        removeFromCart
+        removeFromCart,
+        searchQuery,
+        setSearchQuery
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

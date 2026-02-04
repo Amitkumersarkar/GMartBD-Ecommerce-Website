@@ -65,7 +65,7 @@ const Navbar = () => {
                 </NavLink>
 
 
-                {/* Search Bar (Desktop) */}
+                {/* Search Bar for Desktop menu */}
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-white/50 px-3 rounded-full bg-white/10">
                     <input
                         className="py-1.5 w-full bg-transparent outline-none placeholder-white/70 text-white"

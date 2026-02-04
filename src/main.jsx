@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/HomePage/Home";
 import MainLayOut from "./mainLayout/MainLayOut";
 import { AuthContextProvider } from "./context/AuthContext";
+import AllProducts from "./pages/AllProducts/AllProducts";
 // import SignIn from "./auth/SignIn";
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path: '/AllProducts',
+        element: <AllProducts></AllProducts>
+      }
       // {
       //   path: 'signIn',
       //   Component: SignIn

@@ -1,30 +1,30 @@
-// src/main.jsx or index.jsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/HomePage/Home";
+
 import MainLayOut from "./mainLayout/MainLayOut";
-import { AuthContextProvider } from "./context/AuthContext";
+import Home from "./components/HomePage/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
 // import SignIn from "./auth/SignIn";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    Component: MainLayOut,
+    path: "/",                 // parent route
+    Component: MainLayOut,     // layout component
     children: [
       {
-        index: true,
+        index: true,           // renders at "/"
         Component: Home,
       },
       {
-        path: '/AllProducts',
-        element: <AllProducts></AllProducts>
-      }
+        path: "allProducts",   // renders at "/allProducts"
+        Component: AllProducts,
+      },
       // {
-      //   path: 'signIn',
-      //   Component: SignIn
+      //   path: "signIn",
+      //   Component: SignIn,
       // }
     ],
   },

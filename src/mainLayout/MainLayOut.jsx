@@ -1,12 +1,9 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import Home from "../components/HomePage/Home";
-import { Toaster } from "react-hot-toast";
 import Footer from "../components/Footer/Footer";
-import { useAuthContext } from "../context/AuthContext";
 import LogIn from "../auth/LogIn";
-// import AllProducts from "../pages/AllProducts/AllProducts";
-// import SignIn from "../auth/SignIn";
+import { Toaster } from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext";
 
 const MainLayOut = () => {
     const { pathname } = useLocation();
@@ -15,19 +12,18 @@ const MainLayOut = () => {
 
     return (
         <div>
-            {isSellerPath ? null : <Navbar />}
-            {showUserLogin ? <LogIn></LogIn> : null}
-            {/* {showUserLogin ? <SignIn></SignIn> : null} */}
-            <Toaster></Toaster>
+            {!isSellerPath && <Navbar />}
+
+            {showUserLogin && <LogIn />}
+
+            <Toaster />
+
+            {/* Child pages render here */}
             <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
-                <Routes>
-                    <Route path='/' element={<Home></Home>}></Route>
-                    {/* <Route path='/all-products' element={<AllProducts></AllProducts>}></Route> */}
-                </Routes>
+                <Outlet />
             </div>
-            {
-                !isSellerPath && <Footer></Footer>
-            }
+
+            {!isSellerPath && <Footer />}
         </div>
     );
 };

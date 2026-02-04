@@ -11,15 +11,15 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
-    path: "/",                 // parent route
-    Component: MainLayOut,     // layout component
+    path: "/",
+    Component: MainLayOut,
     children: [
       {
-        index: true,           // renders at "/"
+        index: true,
         Component: Home,
       },
       {
-        path: "allProducts",   // renders at "/allProducts"
+        path: "allProducts",
         Component: AllProducts,
       },
       // {

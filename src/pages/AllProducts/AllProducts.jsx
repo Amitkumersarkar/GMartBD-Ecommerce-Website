@@ -3,12 +3,11 @@ import { useAuthContext } from "../../context/AuthContext";
 import ProductCard from "../ProductCard/ProductCard";
 
 const AllProducts = () => {
-    const { products } = useAuthContext();
-    const [searchQuery, setSearchQuery] = useState("");
+    const { products, searchQuery } = useAuthContext(); // use context query
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     useEffect(() => {
-        if (searchQuery && searchQuery.length > 0) {
+        if (searchQuery && searchQuery.trim().length > 0) {
             setFilteredProducts(
                 products.filter(product =>
                     product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -26,16 +25,6 @@ const AllProducts = () => {
                     All Products
                 </p>
                 <div className="w-16 h-0.5 bg-pink-600 rounded-full"></div>
-            </div>
-
-            <div className="mb-4 w-full max-w-sm">
-                <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded outline-pink-600"
-                />
             </div>
 
             <div className="flex flex-wrap gap-4">

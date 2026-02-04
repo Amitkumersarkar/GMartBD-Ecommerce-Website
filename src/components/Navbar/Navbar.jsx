@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user, setUser, setShowUserLogin } = useAuthContext();
+    const { user, setUser, setShowUserLogin, searchQuery, setSearchQuery } = useAuthContext();
     const navigate = useNavigate();
     const profileRef = useRef(null);
     const [profileOpen, setProfileOpen] = useState(false);
@@ -34,6 +34,17 @@ const Navbar = () => {
         setOpen(false);
     }, [location.pathname]);
 
+    useEffect(() => {
+        if (searchQuery && searchQuery.length > 0) {
+            navigate('/allProducts')
+        }
+    }, [searchQuery]);
+
+    // useEffect(() => {
+    //     if (searchQuery && searchQuery.trim().length > 0) {
+    //         navigate('/allProducts')
+    //     }
+    // }, [searchQuery]);
 
     return (
         <nav className="relative sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
@@ -68,6 +79,7 @@ const Navbar = () => {
                 {/* Search Bar for Desktop menu */}
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-white/50 px-3 rounded-full bg-white/10">
                     <input
+                        onChange={(e) => setSearchQuery(e.target.value)}
                         className="py-1.5 w-full bg-transparent outline-none placeholder-white/70 text-white"
                         type="text"
                         placeholder="Search products"

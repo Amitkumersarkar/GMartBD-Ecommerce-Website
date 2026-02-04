@@ -4,7 +4,8 @@ import Home from "../components/HomePage/Home";
 import { Toaster } from "react-hot-toast";
 import Footer from "../components/Footer/Footer";
 import { useAuthContext } from "../context/AuthContext";
-import SignIn from "../auth/SignIn";
+import LogIn from "../auth/LogIn";
+// import SignIn from "../auth/SignIn";
 
 const MainLayOut = () => {
     const { pathname } = useLocation();
@@ -14,7 +15,8 @@ const MainLayOut = () => {
     return (
         <div>
             {isSellerPath ? null : <Navbar />}
-            {showUserLogin ? <SignIn></SignIn> : null}
+            {showUserLogin ? <LogIn></LogIn> : null}
+            {/* {showUserLogin ? <SignIn></SignIn> : null} */}
             <Toaster></Toaster>
             <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
                 <Routes>

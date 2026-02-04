@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const [user, setUser] = useState(true);
     const [isSeller, setIsSeller] = useState(false);
-    const [showUserLogin, setShowUserLogin] = useState(true);
+    const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const fetchProducts = async () => {

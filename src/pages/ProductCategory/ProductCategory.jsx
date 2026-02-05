@@ -5,15 +5,16 @@ import { categories } from "../../assets/assets";
 const ProductCategory = () => {
     const { products } = useAuthContext();
     const { category } = useParams();
-    const searchCategory = categories.find((item) => item.path.toLocaleLowerCase() === category)
-    const filteredProducts = products.filter((product) => product.category.toLocaleLowerCase() === category)
+    const searchCategory = categories.find((item) => item.path.toLowerCase() === category);
+    const filteredProducts = products.filter((product) => product.category.toLowerCase() === category);
 
     return (
-        <div className="">
+        <div className="mt-16">
             {
                 searchCategory && (
-                    <div className="">
-                        <p className=""></p>
+                    <div className="flex flex-col items-end w-max">
+                        <p className="text-2xl font-medium">{searchCategory.text.toUpperCase()}</p>
+                        <div className="w-16 h-0.5 bg-pink-600 rounded-full"></div>
                     </div>
                 )
             }

@@ -20,14 +20,14 @@ const AllProducts = () => {
 
     return (
         <div className="mt-16 flex flex-col">
-            <div className="flex flex-col items-start mb-4">
+            <div className="flex flex-col items-end w-max mb-4">
                 <p className="text-2xl font-medium uppercase text-black">
                     All Products
                 </p>
-                <div className="w-16 h-0.5 bg-pink-600 rounded-full"></div>
+                <div className="w-16 h-0.5 bg-pink-600 rounded-full "></div>
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex justify-center flex-wrap gap-4">
                 {filteredProducts.length > 0 ? (
                     filteredProducts
                         .filter(product => product.inStock)

@@ -24,9 +24,10 @@ const router = createBrowserRouter([
         Component: AllProducts,
       },
       {
-        path: '/products/:category',
+        path: "products/:category",
         Component: ProductCategory
       }
+
       // {
       //   path: "signIn",
       //   Component: SignIn,

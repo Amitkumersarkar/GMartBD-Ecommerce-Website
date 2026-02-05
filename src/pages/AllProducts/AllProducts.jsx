@@ -3,7 +3,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import ProductCard from "../ProductCard/ProductCard";
 
 const AllProducts = () => {
-    const { products, searchQuery } = useAuthContext(); // use context query
+    const { products, searchQuery } = useAuthContext();
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const AllProducts = () => {
                 <div className="w-16 h-0.5 bg-pink-600 rounded-full "></div>
             </div>
 
-            <div className="flex justify-center flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4">
                 {filteredProducts.length > 0 ? (
                     filteredProducts
                         .filter(product => product.inStock)

@@ -8,6 +8,7 @@ import Home from "./components/HomePage/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
 // import SignIn from "./auth/SignIn";
 import { AuthContextProvider } from "./context/AuthContext";
+import ProductCategory from "./pages/ProductCategory/ProductCategory";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: "allProducts",
         Component: AllProducts,
       },
+      {
+        path: '/products/:category',
+        Component: ProductCategory
+      }
       // {
       //   path: "signIn",
       //   Component: SignIn,

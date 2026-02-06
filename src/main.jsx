@@ -6,9 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayOut from "./mainLayout/MainLayOut";
 import Home from "./components/HomePage/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
-// import SignIn from "./auth/SignIn";
-import { AuthContextProvider } from "./context/AuthContext";
 import ProductCategory from "./pages/ProductCategory/ProductCategory";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -25,13 +25,12 @@ const router = createBrowserRouter([
       },
       {
         path: "products/:category",
-        Component: ProductCategory
-      }
-
-      // {
-      //   path: "signIn",
-      //   Component: SignIn,
-      // }
+        Component: ProductCategory,
+      },
+      {
+        path: "allProducts/:category/:id",
+        Component: ProductDetails,
+      },
     ],
   },
 ]);

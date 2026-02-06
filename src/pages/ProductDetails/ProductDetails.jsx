@@ -50,7 +50,7 @@ const ProductDetails = () => {
 
     // Format price with commas
     const formatPrice = (price) => {
-        return price.toLocaleString("en-BD"); // 1500 → 1,500
+        return price.toLocaleString("en-BD");
     };
 
     return (

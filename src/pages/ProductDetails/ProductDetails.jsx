@@ -166,7 +166,7 @@ const ProductDetails = () => {
                         {relatedProducts.map((p) => (
                             <div
                                 key={p._id}
-                                className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
+                                className="border rounded-lg border-none overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
                                 onClick={() => selectRelatedProduct(p)}
                             >
                                 <img

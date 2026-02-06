@@ -53,7 +53,6 @@ const ProductCard = ({ product }) => {
                         </span>
                     </p>
 
-                    {/* CART BUTTONS */}
                     <div
                         onClick={(e) => e.stopPropagation()}
                         className="text-pink-500"

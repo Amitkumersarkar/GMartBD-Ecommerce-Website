@@ -47,7 +47,6 @@ const ProductDetails = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    // Format price with commas
     const formatPrice = (price) => {
         return price.toLocaleString("en-BD");
     };
@@ -65,7 +64,6 @@ const ProductDetails = () => {
 
             {/* Product Details */}
             <div className="grid md:grid-cols-2 gap-10">
-                {/* Image Gallery */}
                 <div>
                     <div className="overflow-hidden rounded-lg border">
                         <img
@@ -114,7 +112,6 @@ const ProductDetails = () => {
                         <span className="text-gray-600 ml-2">{rating} / 5</span>
                     </div>
 
-                    {/* MRP Price in Tk with comma formatting */}
                     <p className="text-xl mt-2 text-green-600 font-semibold">
                         MRP: Tk {formatPrice(product.price)}
                     </p>
@@ -125,7 +122,6 @@ const ProductDetails = () => {
                         <li>Farm quality</li>
                     </ul>
 
-                    {/* Quantity */}
                     <div className="flex items-center gap-2 mt-4">
                         <button
                             onClick={() => handleQuantity("dec")}
@@ -142,7 +138,6 @@ const ProductDetails = () => {
                         </button>
                     </div>
 
-                    {/* Buttons */}
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
                             onClick={() => addToCart({ ...product, quantity })}
@@ -157,7 +152,6 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            {/* Related Products */}
             {relatedProducts.length > 0 && (
                 <div className="mt-16">
                     <h2 className="text-2xl font-bold mb-6">Related Products</h2>

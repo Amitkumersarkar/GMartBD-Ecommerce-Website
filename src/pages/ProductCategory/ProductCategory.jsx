@@ -21,7 +21,6 @@ const ProductCategory = () => {
     return (
         <div className="mt-16">
             {searchCategory && (
-                // <div className="flex flex-col items-end inline-block">
                 <div className="flex flex-col items-end w-max mb-4">
                     <p className="text-2xl font-medium">
                         {searchCategory.text.toUpperCase()}

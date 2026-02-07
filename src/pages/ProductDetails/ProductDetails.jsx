@@ -13,7 +13,6 @@ const ProductDetails = () => {
     const [quantity, setQuantity] = useState(1);
     const [rating, setRating] = useState(4);
 
-    // Initialize product from URL param
     useEffect(() => {
         const found = products.find((p) => p._id === id);
         if (found) setProduct(found);

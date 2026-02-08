@@ -89,8 +89,6 @@ const ProductDetails = () => {
                 {/* Product Info */}
                 <div className="flex flex-col gap-4">
                     <h1 className="text-3xl font-semibold">{product.name}</h1>
-
-                    {/* Rating */}
                     <div className="flex items-center gap-2">
                         {Array(5)
                             .fill(0)

@@ -78,7 +78,7 @@ const ProductDetails = () => {
                                 key={idx}
                                 src={img}
                                 alt="thumb"
-                                className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 ${selectedImage === idx ? "border-green-500" : "border-gray-200"
+                                className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 ${selectedImage === idx ? "border-pink-500" : "border-gray-200"
                                     } hover:scale-105 transition-transform`}
                                 onClick={() => setSelectedImage(idx)}
                             />
@@ -88,7 +88,7 @@ const ProductDetails = () => {
 
                 {/* Product Info */}
                 <div className="flex flex-col gap-4">
-                    <h1 className="text-3xl font-bold">{product.name}</h1>
+                    <h1 className="text-3xl font-semibold">{product.name}</h1>
 
                     {/* Rating */}
                     <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ const ProductDetails = () => {
                         <span className="text-gray-600 ml-2">{rating} / 5</span>
                     </div>
 
-                    <p className="text-xl mt-2 text-green-600 font-semibold">
+                    <p className="text-xl mt-2 text-pink-600 font-semibold">
                         MRP: Tk {formatPrice(product.price)}
                     </p>
 
@@ -153,8 +153,13 @@ const ProductDetails = () => {
             </div>
 
             {relatedProducts.length > 0 && (
-                <div className="mt-16">
-                    <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+                <div className="mt-16 ">
+                    <div className="flex flex-col items-end w-max mb-4">
+
+                        <h2 className="text-2xl font-medium uppercase text-black ">Related Products</h2>
+                        <div className="w-16 h-0.5 bg-pink-600 rounded-full "></div>
+                    </div>
+
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {relatedProducts.map((p) => (
                             <div
@@ -169,7 +174,7 @@ const ProductDetails = () => {
                                 />
                                 <div className="p-3">
                                     <h3 className="font-semibold">{p.name}</h3>
-                                    <p className="text-green-600 font-bold">Tk {formatPrice(p.price)}</p>
+                                    <p className="text-pink-600 font-bold">Tk {formatPrice(p.price)}</p>
                                 </div>
                             </div>
                         ))}

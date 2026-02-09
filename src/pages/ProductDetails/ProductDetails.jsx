@@ -51,6 +51,9 @@ const ProductDetails = () => {
         return price.toLocaleString("en-BD");
     };
 
+    // add to cart function
+
+
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6">
             <Toaster position="top-right" />

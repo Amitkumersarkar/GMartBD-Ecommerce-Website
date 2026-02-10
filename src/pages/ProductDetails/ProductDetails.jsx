@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 
 const ProductDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const { products, addToCart } = useAuthContext();
 
     const [product, setProduct] = useState(null);
@@ -141,12 +142,19 @@ const ProductDetails = () => {
 
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
-                            onClick={() => addToCart({ ...product._id, quantity })}
+                            // onClick={() => addToCart({ ...product._id, quantity })}
+                            onClick={() => addToCart({ ...product, quantity })}
                             className="px-6 py-3 bg-green-500 text-white rounded shadow hover:bg-green-600 transition"
                         >
                             Add to Cart
                         </button>
-                        <button onClick={() => { addToCart(product._id); Navigate("/cart") }} className="px-6 py-3 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition">
+                        <button
+                            onClick={() => {
+                                addToCart({ ...product, quantity });
+                                navigate("/cart");
+                            }}
+                            // onClick={() => { addToCart(product._id); Navigate("/cart") }} 
+                            className="px-6 py-3 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition">
                             Buy Now
                         </button>
                     </div>

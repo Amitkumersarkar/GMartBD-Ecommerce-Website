@@ -133,22 +133,34 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button onClick={() => setOpen(!open)} className="sm:hidden">
-                <img src={assets.menu_icon} alt="menu" className="w-7 opacity-90 invert brightness-10" />
-            </button>
+            <div className="flex items-center gap-6 sm:hidden">
+                <div
+                    onClick={() => navigate("/cart")}
+                    className="relative cursor-pointer"
+                >
+                    <img src={assets.nav_cart_icon} alt="cart" className="w-6 opacity-90 invert brightness-10" />
+                    <span className="absolute -top-2 -right-3 text-xs text-white bg-pink-500 w-[18px] h-[18px] rounded-full flex items-center justify-center">
+                        {getCartCount()}
+                    </span>
+                </div>
+
+                <button onClick={() => setOpen(!open)} className="">
+                    <img src={assets.menu_icon} alt="menu" className="w-7 opacity-90 invert brightness-10" />
+                </button>
+            </div>
 
             {/* Mobile Menu */}
             {open && (
                 <div className="absolute top-[60px] right-2 w-[220px] bg-white/95 backdrop-blur shadow-xl py-3 flex flex-col gap-2 px-4 text-sm sm:hidden rounded-xl">
 
-                    <div className="flex items-center gap-2 border border-gray-200 px-2 rounded-full bg-gray-50">
+                    {/* <div className="flex items-center gap-2 border border-gray-200 px-2 rounded-full bg-gray-50">
                         <input
                             className="py-1 w-full bg-transparent outline-none placeholder-gray-400 text-xs"
                             type="text"
                             placeholder="Search..."
                         />
                         <img src={assets.search_icon} alt="search" className="h-3 w-3 opacity-70" />
-                    </div>
+                    </div> */}
 
                     <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
                     {user && (

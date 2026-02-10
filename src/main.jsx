@@ -9,6 +9,7 @@ import AllProducts from "./pages/AllProducts/AllProducts";
 import ProductCategory from "./pages/ProductCategory/ProductCategory";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import { AuthContextProvider } from "./context/AuthContext";
+import Cart from "./pages/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: "allProducts/:category/:id",
         Component: ProductDetails,
       },
+      {
+        path: 'cart',
+        Component: Cart
+      }
     ],
   },
 ]);

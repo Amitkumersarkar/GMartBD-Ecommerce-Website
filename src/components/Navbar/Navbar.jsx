@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user, setUser, setShowUserLogin, searchQuery, setSearchQuery } = useAuthContext();
+    const { user, setUser, setShowUserLogin, searchQuery, setSearchQuery, getCartCount } = useAuthContext();
     const navigate = useNavigate();
     const profileRef = useRef(null);
     const [profileOpen, setProfileOpen] = useState(false);
@@ -93,7 +93,7 @@ const Navbar = () => {
                 >
                     <img src={assets.nav_cart_icon} alt="cart" className="w-6 opacity-90 invert brightness-10" />
                     <span className="absolute -top-2 -right-3 text-xs text-white bg-pink-500 w-[18px] h-[18px] rounded-full flex items-center justify-center">
-                        3
+                        {getCartCount()}
                     </span>
                 </div>
 

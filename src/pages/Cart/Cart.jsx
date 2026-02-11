@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
+import { dummyAddress } from "../../assets/assets";
 
 const Cart = () => {
     const [showAddress, setShowAddress] = useState(false)
     const navigate = useNavigate();
     const { products, currency, getCartAmount, cartItems, getCartCount, removeFromCart, updateCartItem } = useAuthContext();
     const [cartArray, setCartArray] = useState([]);
+    const [addresses, setAddresses] = useState(dummyAddress);
+    const [showAddresses, setShowAddresses] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
+    const [paymentOption, setPaymentOption] = useState("COD");
+
     return (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
             <div className='flex-1 max-w-4xl'>

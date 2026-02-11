@@ -22,7 +22,6 @@ const Cart = () => {
     const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
     const [paymentOption, setPaymentOption] = useState("COD");
 
-    /* ---------- BUILD CART SAFELY ---------- */
     const getCart = () => {
         let tempArray = [];
 

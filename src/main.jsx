@@ -10,6 +10,7 @@ import ProductCategory from "./pages/ProductCategory/ProductCategory";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import { AuthContextProvider } from "./context/AuthContext";
 import Cart from "./pages/Cart/Cart";
+import AddAddress from "./pages/AddAddress/AddAddress";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         Component: Cart
+      },
+      {
+        path: 'add-address',
+        Component: AddAddress
       }
     ],
   },

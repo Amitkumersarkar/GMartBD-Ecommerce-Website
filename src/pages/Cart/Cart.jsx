@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { dummyAddress } from "../../assets/assets";
@@ -23,9 +23,14 @@ const Cart = () => {
         setCartArray(tempArray)
     }
 
+    useEffect(() => {
+        if (products.length > 0 && cartItems) {
+            getCart()
+        }
+    }, [products, cartItems])
 
 
-    return (
+    return products.length > 0 && cartItems ? (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
             <div className='flex-1 max-w-4xl'>
                 <h1 className="text-3xl font-medium mb-6">
@@ -130,7 +135,7 @@ const Cart = () => {
                 </button>
             </div>
         </div>
-    );
+    ) : null;
 };
 
 export default Cart;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
@@ -111,18 +111,22 @@ const ProductDetails = () => {
                             )}
                         <span className="text-gray-600 ml-2">{rating} / 5</span>
                     </div>
+                    <div>
+                        <p className="text-xl mt-2 text-pink-600 font-semibold">
+                            MRP: Tk {formatPrice(product.price)}
+                        </p>
+                        <p className="text-sm text-gray-500">(inclusive of all taxes)</p>
+                    </div>
+                    <div>
+                        <h1 className="text-xl">About Product</h1>
+                        <ul className="mt-4 text-gray-600 list-disc pl-5">
+                            <li>Fresh & organic</li>
+                            <li>Rich in vitamins</li>
+                            <li>Farm quality</li>
+                        </ul>
+                    </div>
 
-                    <p className="text-xl mt-2 text-pink-600 font-semibold">
-                        MRP: Tk {formatPrice(product.price)}
-                    </p>
-
-                    <ul className="mt-4 text-gray-600 list-disc pl-5">
-                        <li>Fresh & organic</li>
-                        <li>Rich in vitamins</li>
-                        <li>Farm quality</li>
-                    </ul>
-
-                    <div className="flex items-center gap-2 mt-4">
+                    {/* <div className="flex items-center gap-2 mt-4">
                         <button
                             onClick={() => handleQuantity("dec")}
                             className="px-3 py-1 border rounded shadow hover:bg-gray-100 transition"
@@ -136,7 +140,7 @@ const ProductDetails = () => {
                         >
                             +
                         </button>
-                    </div>
+                    </div> */}
 
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
@@ -185,6 +189,11 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <div className="mt-6 text-center">
+                        <NavLink to='/allProducts'>
+                            <button className=" px-6 py-3 bg-pink-600 text-white rounded shadow hover:bg-green-600/80 transition">See More</button>
+                        </NavLink>
                     </div>
                 </div>
             )}

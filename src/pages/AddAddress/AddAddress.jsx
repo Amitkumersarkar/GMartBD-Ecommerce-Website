@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { assets } from "../../assets/assets";
+import toast from "react-hot-toast";
 
 const InputField = ({ type, placeholder, name, handleChange, address }) => (
     <input
@@ -14,7 +15,7 @@ const InputField = ({ type, placeholder, name, handleChange, address }) => (
 );
 
 const AddAddress = () => {
-    const [address, setAddress] = useState({
+    const initialAddress = {
         firstName: "",
         lastName: "",
         street: "",
@@ -23,7 +24,9 @@ const AddAddress = () => {
         zipCode: "",
         country: "",
         phone: "",
-    });
+    };
+
+    const [address, setAddress] = useState(initialAddress);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +38,12 @@ const AddAddress = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(address);
+
+        // console.log("Saved address:", address);
+
+        toast.success("Address saved successfully!");
+
+        setAddress(initialAddress);
     };
 
     return (
@@ -58,7 +66,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="Last Name"
@@ -66,7 +73,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="Street Address"
@@ -74,7 +80,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="City"
@@ -82,7 +87,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="State"
@@ -90,7 +94,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="ZIP Code"
@@ -98,7 +101,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="text"
                             placeholder="Country"
@@ -106,7 +108,6 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-
                         <InputField
                             type="tel"
                             placeholder="Phone Number"

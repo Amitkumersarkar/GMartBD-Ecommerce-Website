@@ -67,7 +67,7 @@ const ProductDetails = () => {
             {/* Product Details */}
             <div className="grid md:grid-cols-2 gap-10">
                 <div>
-                    <div className="overflow-hidden rounded-lg border">
+                    <div className="overflow-hidden rounded-lg border-none border">
                         <img
                             src={images[selectedImage]}
                             alt={product.name}

@@ -51,7 +51,7 @@ const Cart = () => {
             <div className="flex-1 max-w-4xl">
                 <h1 className="text-3xl font-medium mb-6">
                     Shopping Cart{" "}
-                    <span className="text-sm text-indigo-500">
+                    <span className="text-sm text-pink-600">
                         {getCartCount()} Items
                     </span>
                 </h1>
@@ -154,7 +154,7 @@ const Cart = () => {
                         navigate("/allProducts");
                         window.scrollTo(0, 0);
                     }}
-                    className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium"
+                    className="group cursor-pointer flex items-center mt-8 gap-2 text-pink-600 font-medium"
                 >
                     <img
                         className="group-hover:-translate-x-1 transition"
@@ -188,7 +188,7 @@ const Cart = () => {
                             onClick={() =>
                                 setShowAddress(!showAddress)
                             }
-                            className="text-indigo-500 hover:underline cursor-pointer"
+                            className="text-pink-600 hover:underline cursor-pointer"
                         >
                             Change
                         </button>
@@ -214,7 +214,7 @@ const Cart = () => {
                                         navigate("/add-address");
                                         setShowAddress(false);
                                     }}
-                                    className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
+                                    className="text-pink-600 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
                                 >
                                     Add address
                                 </p>

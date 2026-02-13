@@ -144,7 +144,6 @@ const ProductDetails = () => {
 
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
-                            // onClick={() => addToCart({ ...product._id, quantity })}
                             onClick={() => addToCart({ ...product, quantity })}
                             className="px-6 py-3 bg-green-500 text-white rounded shadow hover:bg-green-600 transition"
                         >
@@ -155,7 +154,6 @@ const ProductDetails = () => {
                                 addToCart({ ...product, quantity });
                                 navigate("/cart");
                             }}
-                            // onClick={() => { addToCart(product._id); Navigate("/cart") }} 
                             className="px-6 py-3 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition">
                             Buy Now
                         </button>

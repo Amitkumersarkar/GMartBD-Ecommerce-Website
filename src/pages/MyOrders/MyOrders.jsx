@@ -4,7 +4,7 @@ const MyOrders = () => {
 
     return (
         <div>
-
+            <p className="">My Orders</p>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../context/AuthContext';
 import { dummyOrders } from '../../assets/assets';
 
@@ -10,15 +10,24 @@ const MyOrders = () => {
         setMyOrders(dummyOrders);
     }
 
-
+    useEffect(() => {
+        fetchMyOrders()
+    }, [])
 
     return (
         <div className='mt-16 pb-16'>
             <div className="flex flex-col items-end w-max mb-8">
                 <p className="text-2xl font-medium uppercase">My Orders</p>
                 <div className='w-16 h-0.5 bg-pink-600 rounded-full'></div>
-
             </div>
+            {myOrders.map((order, index) => (
+                <div className="">
+                    <p className="">
+                        <span>OrderId:{order._id}</span>
+                        <span>OrderId:{order._id}</span>
+                    </p>
+                </div>
+            ))}
         </div>
     );
 };

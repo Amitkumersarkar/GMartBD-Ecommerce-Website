@@ -72,7 +72,7 @@ const MyOrders = () => {
                                 </p>
                             </div>
 
-                            <p className="text-pink-600 text-lg font-medium">
+                            <p className="text-cyan-700 text-lg font-medium">
                                 Amount : {currency}
                                 {item.product.offerPrice *
                                     (item.quantity ?? 1)}

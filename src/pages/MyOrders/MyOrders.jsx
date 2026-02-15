@@ -39,7 +39,7 @@ const MyOrders = () => {
                                         <p>Category : {item.product.category}</p>
                                     </div>
                                 </div>
-                                <div className="">
+                                <div className="text-pink-600 text-lg font-medium">
                                     <p className="">Quantity : {item.quantity || "1"} </p>
                                     <p className="">Status : {order.status} </p>
                                     <p className="">Date : {new Date(order.createdAt).toLocaleDateString()} </p>

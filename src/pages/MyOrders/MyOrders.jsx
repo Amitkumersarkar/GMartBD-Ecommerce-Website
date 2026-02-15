@@ -27,6 +27,29 @@ const MyOrders = () => {
                         <span>Payment : {order.paymentType}</span>
                         <span> Total Amount : {currency} {order.amount}</span>
                     </p>
+                    {
+                        order.items.map((item, index) => (
+                            <div className="flex items-center mb-4 md:mb-0">
+                                <div className="">
+                                    <div className="bg-pink-600/10 p-4 rounded-lg">
+                                        <img className='w-16 h-16' src={item.product.image[0]} alt="image" />
+                                    </div>
+                                    <div className="ml-4">
+                                        <h2 className='text-xl font-medium text-gray-800'>{item.product.name}</h2>
+                                        <p>Category : {item.product.category}</p>
+                                    </div>
+                                </div>
+                                <div className="">
+                                    <p className="">Quantity : {item.quantity || "1"} </p>
+                                    <p className="">Status : {order.status} </p>
+                                    <p className="">Date : {new Date(order.createdAt).toLocaleDateString()} </p>
+                                </div>
+                                <p className="text-pink-600 text-lg font-medium">
+                                    Amount :  {currency}{item.product.offerPrice * item.quantity}
+                                </p>
+                            </div>
+                        ))
+                    }
                 </div>
             ))}
         </div>

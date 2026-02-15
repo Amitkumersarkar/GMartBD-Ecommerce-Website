@@ -115,7 +115,7 @@ const Navbar = () => {
                         {profileOpen && (
                             <ul className="absolute top-12 right-0 bg-gradient-to-br from-white via-indigo-50 to-sky-50 shadow-2xl border border-white/40 py-2 w-36 rounded-xl text-sm text-gray-700 backdrop-blur-md">
                                 <li
-                                    onClick={() => { navigate("/my-orders"); setProfileOpen(false); }}
+                                    onClick={() => { navigate("/myOrders"); setProfileOpen(false); }}
                                     className="relative px-3 py-2 cursor-pointer group/item overflow-hidden hover:bg-indigo-100 rounded-md"
                                 >
                                     My Orders

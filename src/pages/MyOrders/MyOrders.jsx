@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuthContext } from '../../context/AuthContext';
+import { dummyOrders } from '../../assets/assets';
 
 const MyOrders = () => {
+    const [myOrders, setMyOrders] = useState([]);
+    const { currency } = useAuthContext();
+
+    const fetchMyOrders = async () => {
+        setMyOrders(dummyOrders);
+    }
+
+
 
     return (
         <div className='mt-16 pb-16'>
             <div className="flex flex-col items-end w-max mb-8">
                 <p className="text-2xl font-medium uppercase">My Orders</p>
-                <div className='w-16 h-0.5 bg-pink-600 rounded-full'>
+                <div className='w-16 h-0.5 bg-pink-600 rounded-full'></div>
 
-                </div>
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import Cart from "./pages/Cart/Cart";
 import AddAddress from "./pages/AddAddress/AddAddress";
 import MyOrders from "./pages/MyOrders/MyOrders";
+import SellerLogIn from "./components/SellerDashBoard/SellerLogIn";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: 'myOrders',
         Component: MyOrders
+      },
+      {
+        path: 'sellerLogIn',
+        Component: SellerLogIn
       }
     ],
   },

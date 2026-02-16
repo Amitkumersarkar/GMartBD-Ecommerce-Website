@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         Component: MyOrders
       },
       {
-        path: 'sellerLogIn',
+        path: 'seller',
         Component: SellerLogIn
       }
     ],

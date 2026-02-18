@@ -1,4 +1,5 @@
 import { assets, footerLinks } from "../../assets/assets";
+import GMartLogo from "../../assets/GMartLogo.png";
 
 const Footer = () => {
 
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="px-4 sm:px-6 md:px-16 lg:px-24 xl:px-32 mt-24 bg-primary/10">
             <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
                 <div className="max-w-md">
-                    <img className="w-28 md:w-32" src={assets.logo} alt="logo" />
+                    <img className="w-28 md:w-32" src={GMartLogo} alt="logo" />
                     <p className="mt-4 text-sm md:text-base">
                         We deliver fresh groceries and snacks straight to your door. Trusted by thousands, we aim to make your shopping experience simple and affordable.
                     </p>

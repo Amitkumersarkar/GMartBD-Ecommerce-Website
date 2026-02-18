@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import GMartLogo from "../../assets/GMartLogo.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -49,13 +50,18 @@ const Navbar = () => {
     return (
         <nav className="relative sticky top-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gradient-to-r from-cyan-900/80 via-indigo-700/80 to-sky-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg">
 
-            <NavLink to="/" onClick={() => setOpen(false)}>
-                <img src={assets.logo} alt="logo" className="h-9" />
+            <NavLink to="/" onClick={() => setOpen(false)} className="flex items-center">
+                <img
+                    src={GMartLogo}
+                    alt="GMart Logo"
+                    className="h-16 w-auto object-contain scale-150 origin-left"
+                />
             </NavLink>
 
             {/* Desktop Menu */}
             <div className="hidden sm:flex items-center gap-8 text-white/90">
-                {/* <NavLink className="hover:text-white transition" to="/">Home</NavLink> */}
+                <NavLink className="relative hover:text-white transition after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100" to="/">Home</NavLink>
+
                 <NavLink
                     to="/about"
                     className="relative hover:text-white transition after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">

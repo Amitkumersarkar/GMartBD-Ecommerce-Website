@@ -12,7 +12,6 @@ const SellerLogIn = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Temporary login logic
         if (email && password) {
             setIsSeller(true);
         }

@@ -1,19 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const SellerLogIn = () => {
     const { isSeller, setIsSeller } = useAuthContext();
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // default credentials
+    const [email, setEmail] = useState("seller@gmail.com");
+    const [password, setPassword] = useState("123456");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (email && password) {
+        if (email === "seller@gmail.com" && password === "123456") {
             setIsSeller(true);
+            toast.success("Seller login successful 🚀");
+        } else {
+            toast.error("Invalid email or password ❌");
         }
     };
 
@@ -22,8 +28,6 @@ const SellerLogIn = () => {
             navigate("/sellerDashBoard");
         }
     }, [isSeller, navigate]);
-
-    if (isSeller) return null;
 
     return (
         <form
@@ -35,26 +39,32 @@ const SellerLogIn = () => {
                     <span className="text-pink-600">Seller LogIn</span>
                 </p>
 
-                <div className="w-full">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border border-none rounded outline-none focus:border-pink-600"
-                    />
-                </div>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-pink-600"
+                />
 
-                <div className="w-full">
+                {/* Password with show/hide options*/}
+                <div className="w-full relative">
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border border-none rounded outline-none focus:border-pink-600"
+                        className="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-pink-600"
                     />
+
+                    <span
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-2.5 cursor-pointer text-xs text-pink-600 select-none"
+                    >
+                        {showPassword ? "Hide" : "Show"}
+                    </span>
                 </div>
 
                 <button

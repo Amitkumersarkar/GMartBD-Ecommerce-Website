@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
@@ -9,15 +9,32 @@ const ProductCard = ({ product }) => {
 
     if (!product) return null;
 
+    const quantityInCart = cartItems[product._id] || 0;
+
+    const handleAddToCart = (qty = 1) => {
+        addToCart({ ...product, quantity: qty });
+        toast.success(`${product.name} added to cart!`);
+    };
+
+    const handleDecrement = () => {
+        if (quantityInCart > 1) {
+            addToCart({ ...product, quantity: -1 });
+            toast.success(`${product.name} quantity decreased!`);
+        } else if (quantityInCart === 1) {
+            removeFromCart(product._id);
+            toast(`${product.name} removed from cart`);
+        }
+    };
+
     return (
         <div
             onClick={() => {
                 navigate(`/Products/${product.category.toLowerCase()}/${product._id}`);
                 window.scrollTo(0, 0);
             }}
-            className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full"
+            className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full cursor-pointer"
         >
-            <div className="group cursor-pointer flex items-center justify-center px-2">
+            <div className="group flex items-center justify-center px-2">
                 <img
                     className="group-hover:scale-105 transition max-w-26 md:max-w-36"
                     src={product.image[0]}
@@ -25,13 +42,14 @@ const ProductCard = ({ product }) => {
                 />
             </div>
 
-            <div className="text-gray-500/60 text-sm">
+            {/* Product Info */}
+            <div className="text-gray-500/60 text-sm mt-2">
                 <p>{product.category}</p>
                 <p className="text-gray-700 font-medium text-lg truncate w-full">
                     {product.name}
                 </p>
 
-                <div className="flex items-center gap-0.5">
+                <div className="flex items-center gap-0.5 mt-1">
                     {Array(5)
                         .fill("")
                         .map((_, i) => (
@@ -53,13 +71,15 @@ const ProductCard = ({ product }) => {
                         </span>
                     </p>
 
+                    {/* Add / Increment / Decrement products */}
                     <div
+                        // prevent card navigation
                         onClick={(e) => e.stopPropagation()}
                         className="text-pink-500"
                     >
-                        {!cartItems[product._id] ? (
+                        {quantityInCart === 0 ? (
                             <button
-                                onClick={() => addToCart(product._id)}
+                                onClick={() => handleAddToCart(1)}
                                 className="flex items-center justify-center gap-1 bg-pink-100 border border-pink-300 md:w-[80px] w-[64px] h-[34px] rounded text-pink-600"
                             >
                                 <img src={assets.cart_icon} alt="cartIcon" />
@@ -68,17 +88,15 @@ const ProductCard = ({ product }) => {
                         ) : (
                             <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-pink-500/25 rounded select-none">
                                 <button
-                                    onClick={() => removeFromCart(product._id)}
-                                    className="px-2 h-full"
+                                    onClick={handleDecrement}
+                                    className="px-2 h-full font-bold"
                                 >
                                     -
                                 </button>
-                                <span className="w-5 text-center">
-                                    {cartItems[product._id]}
-                                </span>
+                                <span className="w-5 text-center">{quantityInCart}</span>
                                 <button
-                                    onClick={() => addToCart(product._id)}
-                                    className="px-2 h-full"
+                                    onClick={() => handleAddToCart(1)}
+                                    className="px-2 h-full font-bold"
                                 >
                                     +
                                 </button>

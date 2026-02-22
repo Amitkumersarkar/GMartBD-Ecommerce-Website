@@ -15,6 +15,7 @@ import MyOrders from "./pages/MyOrders/MyOrders";
 import SellerLogIn from "./components/SellerDashBoard/SellerLogIn";
 import SellerLayOut from "./pages/Seller/SellerLayOut";
 import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: 'about',
         Component: About
+      },
+      {
+        path: 'contact',
+        Component: Contact
       }
     ],
   },

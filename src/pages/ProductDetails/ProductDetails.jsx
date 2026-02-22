@@ -144,17 +144,20 @@ const ProductDetails = () => {
 
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
-                            onClick={() => addToCart({ ...product, quantity })}
+                            onClick={() => {
+                                addToCart({ ...product, quantity });
+                                toast.success("Product added to cart!");
+                            }}
                             className="px-6 py-3 bg-green-500 text-white rounded shadow hover:bg-green-600 transition"
                         >
                             Add to Cart
                         </button>
                         <button
-                            onClick={() => {
-                                addToCart({ ...product, quantity });
-                                navigate("/cart");
-                            }}
-                            className="px-6 py-3 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition">
+                            onClick={() =>
+                                addToCart({ ...product, quantity }, () => navigate("/cart"))
+                            }
+                            className="px-6 py-3 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition"
+                        >
                             Buy Now
                         </button>
                     </div>

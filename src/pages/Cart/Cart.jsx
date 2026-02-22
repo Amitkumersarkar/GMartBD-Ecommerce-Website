@@ -71,7 +71,7 @@ const Cart = () => {
                             <div
                                 onClick={() => {
                                     navigate(
-                                        `/allProducts/${product.category?.toLowerCase()}/${product._id}`
+                                        `/Products/${product.category?.toLowerCase()}/${product._id}`
                                     );
                                     window.scrollTo(0, 0);
                                 }}

@@ -33,11 +33,21 @@ export const AuthContextProvider = ({ children }) => {
     }, []);
 
     /* Cart Actions */
-    const addToCart = (itemId) => {
-        const cartData = cloneCart();
-        cartData[itemId] = (cartData[itemId] || 0) + 1;
-        setCartItems(cartData);
-        toast.success("Added to cart");
+    // const addToCart = (itemId) => {
+    //     const cartData = cloneCart();
+    //     cartData[itemId] = (cartData[itemId] || 0) + 1;
+    //     setCartItems(cartData);
+    //     toast.success("Added to cart");
+    // };
+
+    const addToCart = (product, callback) => {
+        setCartItems(prev => {
+            const updated = { ...prev };
+            updated[product._id] = (updated[product._id] || 0) + product.quantity;
+            return updated;
+        });
+
+        if (callback) callback();
     };
 
     const removeFromCart = (itemId) => {

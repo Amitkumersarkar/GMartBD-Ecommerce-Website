@@ -14,6 +14,7 @@ import AddAddress from "./pages/AddAddress/AddAddress";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import SellerLogIn from "./components/SellerDashBoard/SellerLogIn";
 import SellerLayOut from "./pages/Seller/SellerLayOut";
+import About from "./pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: 'sellerDashBoard',
         Component: SellerLayOut
+      },
+      {
+        path: 'about',
+        Component: About
       }
     ],
   },

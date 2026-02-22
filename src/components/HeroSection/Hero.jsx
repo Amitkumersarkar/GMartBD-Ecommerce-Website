@@ -12,7 +12,7 @@ const Hero = () => {
                     Freshness You Can Trust, Savings You will Love!
                 </h1>
                 <div className="flex items-center mt-6 font-medium">
-                    <Link to='/products' className="group flex items-center font-semibold gap-2 px-7 md:px-9 py-3 bg-pink-600 hover:bg-primary-dull transition rounded text-white cursor-pointer">
+                    <Link to='/products' className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition">
                         Shop Now
                         <img src={assets.white_arrow_icon} alt="arrow" className="md:hidden transition group-focus:translate-x-1" />
                     </Link>

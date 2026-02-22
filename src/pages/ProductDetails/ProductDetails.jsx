@@ -193,7 +193,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="mt-6 text-center">
                         <NavLink to='/Products'>
-                            <button className=" px-6 py-3 bg-pink-600 text-white rounded shadow hover:bg-green-600/80 transition">See More</button>
+                            <button className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition">See More</button>
                         </NavLink>
                     </div>
                 </div>

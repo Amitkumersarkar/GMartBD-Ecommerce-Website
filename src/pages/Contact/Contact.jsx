@@ -22,17 +22,17 @@ const Contact = () => {
                         <input
                             type="text"
                             placeholder="Your Name"
-                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-pink-600"
+                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-pink-600"
                         />
                         <input
                             type="email"
                             placeholder="Your Email"
-                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-pink-600"
+                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-pink-600"
                         />
                         <textarea
                             placeholder="Your Message"
                             rows={5}
-                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-pink-600"
+                            className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-pink-600"
                         />
                         <button
                             type="submit"

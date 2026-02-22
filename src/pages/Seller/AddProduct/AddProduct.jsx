@@ -1,10 +1,14 @@
+import { AuthContext } from "../../../context/AuthContext";
+
 const AddProduct = () => {
+    const { isSeller } = AuthContext();
 
-    return (
-        <div>
+    if (isSeller)
+        return (
+            <div>
 
-        </div>
-    );
+            </div>
+        );
 };
 
 export default AddProduct;

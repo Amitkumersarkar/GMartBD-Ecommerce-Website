@@ -151,7 +151,7 @@ const Cart = () => {
 
                 <button
                     onClick={() => {
-                        navigate("/allProducts");
+                        navigate("/Products");
                         window.scrollTo(0, 0);
                     }}
                     className="group cursor-pointer flex items-center mt-8 gap-2 text-pink-600 font-medium"

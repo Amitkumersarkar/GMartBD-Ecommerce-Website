@@ -3,7 +3,6 @@ import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
 import GMartLogo from "../../assets/GMartLogo.png";
 import { useEffect } from "react";
-// import AddProduct from "./AddProduct/AddProduct";
 
 const SellerLayOut = () => {
     const { isSeller, setIsSeller } = useAuthContext();
@@ -62,11 +61,8 @@ const SellerLayOut = () => {
                         </NavLink>
                     ))}
                 </div>
-
-                {/* Main Content */}
                 <div className="flex-1 p-6">
                     <Outlet />
-                    {/* <AddProduct></AddProduct> */}
                 </div>
             </div>
         </div>

@@ -3,13 +3,12 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 const Contact = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 flex flex-col gap-12">
-
             <div className="text-center">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800">
                     Contact <span className="text-pink-600">Us</span>
                 </h1>
                 <p className="mt-4 text-gray-600 text-base sm:text-lg md:text-xl">
-                    Have questions or feedback? We'd love to hear from you! Fill out the form below or reach us through our contact info.
+                    Have questions or feedback? We'd love to hear from you!
                 </p>
             </div>
 
@@ -17,7 +16,10 @@ const Contact = () => {
             <div className="flex flex-col lg:flex-row gap-12">
 
                 <div className="flex-1 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">Send us a Message</h2>
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+                        Send us a Message
+                    </h2>
+
                     <form className="flex flex-col gap-4">
                         <input
                             type="text"
@@ -43,31 +45,53 @@ const Contact = () => {
                     </form>
                 </div>
 
-                {/* Contact Info */}
+                {/* Contact Info + Map */}
                 <div className="flex-1 flex flex-col gap-6">
-                    <h2 className="text-2xl font-semibold text-gray-800">Get in Touch</h2>
+                    <h2 className="text-2xl font-semibold text-gray-800">
+                        Get in Touch
+                    </h2>
+
                     <div className="flex items-start gap-4">
                         <FaEnvelope className="text-pink-600 w-6 h-6 mt-1" />
-                        <p className="text-gray-600 text-sm sm:text-base">amitsarkar.dev.bd@gmail.com</p>
+                        <p className="text-gray-600">
+                            amitsarkar.dev.bd@gmail.com
+                        </p>
                     </div>
+
                     <div className="flex items-start gap-4">
                         <FaPhone className="text-pink-600 w-6 h-6 mt-1" />
-                        <p className="text-gray-600 text-sm sm:text-base">+880 1234 567890</p>
+                        <p className="text-gray-600">
+                            +8801986804513
+                        </p>
                     </div>
+
                     <div className="flex items-start gap-4">
                         <FaMapMarkerAlt className="text-pink-600 w-6 h-6 mt-1" />
-                        <p className="text-gray-600 text-sm sm:text-base">Mirpur-2, Dhaka, Bangladesh</p>
+                        <p className="text-gray-600">
+                            Mirpur-2, Dhaka, Bangladesh
+                        </p>
+                    </div>
+
+                    {/* Google Map */}
+                    <div className="mt-4 w-full h-64 rounded-lg overflow-hidden border">
+                        <iframe
+                            title="Google Map"
+                            src="https://www.google.com/maps?q=Mirpur-2,Dhaka,Bangladesh&output=embed"
+                            className="w-full h-full border-0"
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
                     </div>
                 </div>
             </div>
 
-            {/* Developed By Section */}
+            {/* Footer */}
             <div className="text-center mt-12 border-t pt-6">
-                <p className="text-gray-500 text-sm sm:text-base">
-                    Developed by <span className="text-pink-600 font-semibold">Amit Sarkar</span> &copy; {new Date().getFullYear()}
+                <p className="text-gray-500 text-sm">
+                    Developed by <span className="text-pink-600 font-semibold">Amit Sarkar</span> © {new Date().getFullYear()}
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm mt-1">
-                    Full-Stack Developer | BUBT CSE | <span className="text-gray-400">amitsarkar.dev.bd@gmail.com</span>
+                <p className="text-gray-400 text-xs mt-1">
+                    Full-Stack Developer | BUBT CSE | amitsarkar.dev.bd@gmail.com
                 </p>
             </div>
 

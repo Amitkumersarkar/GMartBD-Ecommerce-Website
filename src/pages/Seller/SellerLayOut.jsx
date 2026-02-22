@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
+import GMartLogo from "../../assets/GMartLogo.png";
 
 const SellerLayOut = () => {
     const { setIsSeller } = useAuthContext();
@@ -23,7 +24,7 @@ const SellerLayOut = () => {
                 <Link to="/">
                     <img
                         className="cursor-pointer w-32 md:w-40"
-                        src={assets.logo}
+                        src={GMartLogo}
                         alt="logo"
                     />
                 </Link>

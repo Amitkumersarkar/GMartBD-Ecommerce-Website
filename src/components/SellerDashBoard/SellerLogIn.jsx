@@ -19,7 +19,7 @@ const SellerLogIn = () => {
 
     useEffect(() => {
         if (isSeller) {
-            navigate("/seller");
+            navigate("/sellerDashBoard");
         }
     }, [isSeller, navigate]);
 

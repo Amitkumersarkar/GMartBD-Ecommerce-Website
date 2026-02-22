@@ -1,22 +1,12 @@
 import React from "react";
 import GMartLogo from "../../assets/GMartLogo.png";
-import DeliveryBoy from "../../assets/bottom_banner_image_sm.png"; // added extension
+import DeliveryBoy from "../../assets/deliveryBoy.jpg"; // imported correctly
+
 import { FaShippingFast, FaTags, FaHeadset } from "react-icons/fa";
 
 const About = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 mb-16 flex flex-col gap-12">
-
-            {/* Logo */}
-            <div className="flex justify-center mb-4">
-                <img
-                    src={GMartLogo}
-                    alt="G-Mart Logo"
-                    className="w-32 sm:w-40 md:w-48 object-contain"
-                />
-            </div>
-
-            {/* Hero Section */}
             <div className="flex flex-col-reverse md:flex-row items-center gap-8">
                 <div className="flex-1">
                     <h1 className="text-3xl md:text-5xl font-bold text-gray-800">

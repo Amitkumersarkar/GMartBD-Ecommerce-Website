@@ -126,7 +126,7 @@ const ProductDetails = () => {
                         </ul>
                     </div>
 
-                    {/* <div className="flex items-center gap-2 mt-4">
+                    <div className="flex items-center gap-2 mt-4">
                         <button
                             onClick={() => handleQuantity("dec")}
                             className="px-3 py-1 border rounded shadow hover:bg-gray-100 transition"
@@ -140,7 +140,7 @@ const ProductDetails = () => {
                         >
                             +
                         </button>
-                    </div> */}
+                    </div>
 
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button

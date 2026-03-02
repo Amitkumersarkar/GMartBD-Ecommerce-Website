@@ -57,7 +57,7 @@ const AddAddress = () => {
                 <div className="flex-1 max-w-md">
                     <form
                         onSubmit={handleSubmit}
-                        className="space-y-3 mt-6 text-sm"
+                        className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-sm"
                     >
                         <InputField
                             type="text"
@@ -66,6 +66,7 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
+
                         <InputField
                             type="text"
                             placeholder="Last Name"
@@ -73,13 +74,17 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-                        <InputField
-                            type="text"
-                            placeholder="Street Address"
-                            name="street"
-                            address={address}
-                            handleChange={handleChange}
-                        />
+
+                        <div className="md:col-span-2">
+                            <InputField
+                                type="text"
+                                placeholder="Street Address"
+                                name="street"
+                                address={address}
+                                handleChange={handleChange}
+                            />
+                        </div>
+
                         <InputField
                             type="text"
                             placeholder="City"
@@ -87,6 +92,7 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
+
                         <InputField
                             type="text"
                             placeholder="State"
@@ -94,6 +100,7 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
+
                         <InputField
                             type="text"
                             placeholder="ZIP Code"
@@ -101,6 +108,7 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
+
                         <InputField
                             type="text"
                             placeholder="Country"
@@ -108,20 +116,25 @@ const AddAddress = () => {
                             address={address}
                             handleChange={handleChange}
                         />
-                        <InputField
-                            type="tel"
-                            placeholder="Phone Number"
-                            name="phone"
-                            address={address}
-                            handleChange={handleChange}
-                        />
 
-                        <button
-                            type="submit"
-                            className="w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700 transition"
-                        >
-                            Save Address
-                        </button>
+                        <div className="md:col-span-2">
+                            <InputField
+                                type="tel"
+                                placeholder="Phone Number"
+                                name="phone"
+                                address={address}
+                                handleChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <button
+                                type="submit"
+                                className="w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700 transition"
+                            >
+                                Save Address
+                            </button>
+                        </div>
                     </form>
                 </div>
 

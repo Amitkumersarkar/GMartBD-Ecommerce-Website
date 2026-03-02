@@ -1,57 +1,97 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
-import { dummyOrders } from "../../../assets/assets";
+import { assets, dummyOrders } from "../../../assets/assets";
 
 const Orders = () => {
     const { currency } = useAuthContext();
     const [orders, setOrders] = useState([]);
 
-    const fetchOrders = async () => {
-        setOrders(dummyOrders);
-    };
-
     useEffect(() => {
-        fetchOrders();
-
+        setOrders(dummyOrders || []);
     }, []);
 
     return (
-        <div>
+        <div className="flex-1 h-[95vh] overflow-y-auto">
+            <div className="md:p-10 p-4 space-y-6">
+                <h2 className="text-2xl font-semibold">Orders List</h2>
 
-            <div className="md:p-10 p-4 space-y-4">
-                <h2 className="text-lg font-medium">Orders List</h2>
-                {orders.map((order, index) => (
-                    <div key={index} className="flex flex-col md:grid md:grid-cols-[2fr_1fr_1fr_1fr] md:items-center gap-5 p-5 max-w-4xl rounded-md border border-gray-300 text-gray-800">
-                        <div className="flex gap-5">
-                            <img className="w-12 h-12 object-cover opacity-60" src={boxIcon} alt="boxIcon" />
-                            <>
-                                {order.items.map((item, index) => (
-                                    <div key={index} className="flex flex-col justify-center">
-                                        <p className="font-medium">
-                                            {item.product.name} <span className={`text-indigo-500 ${item.quantity < 2 && "hidden"}`}>x {item.quantity}</span>
+                {orders.length === 0 ? (
+                    <p className="text-gray-500">No orders found.</p>
+                ) : (
+                    orders.map((order, orderIndex) => (
+                        <div
+                            key={order._id || orderIndex}
+                            className="flex flex-col md:grid md:grid-cols-[2fr_1.5fr_1fr_1.5fr] gap-6 p-6 rounded-lg border border-gray-200 shadow-sm bg-white"
+                        >
+                            {/* Products Section */}
+                            <div className="flex gap-4">
+                                <img
+                                    className="w-14 h-14 object-contain"
+                                    src={assets.box_icon}
+                                    alt="box icon"
+                                />
+
+                                <div className="flex flex-col gap-2">
+                                    {order.items?.map((item, itemIndex) => (
+                                        <p key={itemIndex} className="font-medium text-gray-800">
+                                            {item.product?.name}
+                                            <span className="text-pink-600 ml-2">
+                                                x {item.quantity}
+                                            </span>
                                         </p>
-                                    </div>
-                                ))}
-                            </>
-                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
-                        <div className="text-sm">
-                            <p className='font-medium mb-1'>{order.address.firstName} {order.address.lastName}</p>
-                            <p>{order.address.street}, {order.address.city}, {order.address.state},{order.address.zipcode}, {order.address.country}</p>
-                        </div>
+                            {/* Address Section */}
+                            <div className="text-sm text-gray-600 space-y-1">
+                                <p className="font-medium text-gray-800">
+                                    {order.address?.firstName} {order.address?.lastName}
+                                </p>
+                                <p>
+                                    {order.address?.street}, {order.address?.city}
+                                </p>
+                                <p>
+                                    {order.address?.state}, {order.address?.zipcode},{" "}
+                                    {order.address?.country}
+                                </p>
+                                <p>Phone: {order.address?.phone}</p>
+                            </div>
 
-                        <p className="font-medium text-base my-auto text-black/70">${order.amount}</p>
+                            {/* Amount Section */}
+                            <div className="flex items-center">
+                                <p className="text-lg font-semibold">
+                                    {currency} {order.amount}
+                                </p>
+                            </div>
 
-                        <div className="flex flex-col text-sm">
-                            <p>Method: {order.paymentType}</p>
-                            <p>Date: {order.orderDate}</p>
-                            <p>Payment: {order.isPaid ? "Paid" : "Pending"}</p>
+                            {/* Payment Info Section */}
+                            <div className="flex flex-col justify-center text-sm space-y-1">
+                                <p>
+                                    Method:{" "}
+                                    <span className="font-medium">{order.paymentType}</span>
+                                </p>
+                                <p>
+                                    Date:{" "}
+                                    {order.createdAt
+                                        ? new Date(order.createdAt).toLocaleDateString()
+                                        : "N/A"}
+                                </p>
+                                <p>
+                                    Payment:{" "}
+                                    <span
+                                        className={`font-medium ${order.isPaid ? "text-green-600" : "text-red-500"
+                                            }`}
+                                    >
+                                        {order.isPaid ? "Paid" : "Pending"}
+                                    </span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                )}
             </div>
         </div>
-
     );
 };
 

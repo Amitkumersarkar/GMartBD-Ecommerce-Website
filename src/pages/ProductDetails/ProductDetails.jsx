@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 const ProductDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { products, addToCart } = useAuthContext();
+    const { products, addToCart, currency } = useAuthContext();
 
     const [product, setProduct] = useState(null);
     const [selectedImage, setSelectedImage] = useState(0);
@@ -113,7 +113,7 @@ const ProductDetails = () => {
                     </div>
                     <div>
                         <p className="text-xl mt-2 text-pink-600 font-semibold">
-                            MRP: Tk {formatPrice(product.price)}
+                            MRP: {currency} {formatPrice(product.price)}
                         </p>
                         <p className="text-sm text-gray-500">(inclusive of all taxes)</p>
                     </div>

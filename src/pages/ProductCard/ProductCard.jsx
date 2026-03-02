@@ -65,9 +65,9 @@ const ProductCard = ({ product }) => {
 
                 <div className="flex items-end justify-between mt-3">
                     <p className="md:text-xl text-base font-medium text-pink-500">
-                        {currency} Tk {product.offerPrice}{" "}
+                        {currency} {product.offerPrice}{" "}
                         <span className="text-gray-500/60 md:text-sm text-xs line-through">
-                            {currency} Tk {product.price}
+                            {currency} {product.price}
                         </span>
                     </p>
 

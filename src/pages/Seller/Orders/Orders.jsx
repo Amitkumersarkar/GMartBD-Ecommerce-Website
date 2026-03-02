@@ -1,5 +1,9 @@
+import { useState } from "react";
+import { useAuthContext } from "../../../context/AuthContext";
 
 const Orders = () => {
+    const { currency } = useAuthContext();
+    const [orders, setOrders] = useState();
 
     return (
         <div className="md:p-10 p-4 space-y-4">

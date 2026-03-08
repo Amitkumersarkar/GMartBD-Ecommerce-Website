@@ -25,17 +25,21 @@ const SellerLogIn = () => {
     // };
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
         try {
-            e.preventDefault();
             const { data } = await axios.post('/api/seller/login', { email, password })
+
             if (data.success) {
                 setIsSeller(true)
-                navigate('/seller')
+                toast.success("Seller login successful 🚀")
+                navigate('/sellerDashBoard')
             } else {
                 toast.error(data.message)
             }
+
         } catch (error) {
-            toast.error(data.message)
+            toast.error(error.response?.data?.message || "Login failed")
         }
     }
 

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-// import axios from "axios";
 
 const SellerLogIn = () => {
     const { isSeller, setIsSeller, axios } = useAuthContext();
@@ -13,16 +12,19 @@ const SellerLogIn = () => {
     const [password, setPassword] = useState("123456");
     const [showPassword, setShowPassword] = useState(false);
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     if (email === "seller@gmail.com" && password === "123456") {
-    //         setIsSeller(true);
-    //         toast.success("Seller login successful 🚀");
-    //     } else {
-    //         toast.error("Invalid email or password ❌");
-    //     }
-    // };
+    // Fetch seller status
+    const fetchSeller = async () => {
+        try {
+            const { data } = await axios.get('/api/seller/is-auth');
+            if (data.success) {
+                setIsSeller(true)
+            } else {
+                setIsSeller(false)
+            }
+        } catch (error) {
+            setIsSeller(false)
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,10 +46,14 @@ const SellerLogIn = () => {
     }
 
     useEffect(() => {
+        fetchSeller()
+    }, [])
+
+    useEffect(() => {
         if (isSeller) {
             navigate("/sellerDashBoard");
         }
-    }, [isSeller, navigate]);
+    }, [isSeller, navigate])
 
     return (
         <form

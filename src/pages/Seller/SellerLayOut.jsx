@@ -3,9 +3,10 @@ import { assets } from "../../assets/assets";
 import { useAuthContext } from "../../context/AuthContext";
 import GMartLogo from "../../assets/GMartLogo.png";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const SellerLayOut = () => {
-    const { isSeller, setIsSeller } = useAuthContext();
+    const { isSeller, setIsSeller, axios } = useAuthContext();
     const navigate = useNavigate();
 
     // Redirect non-sellers
@@ -19,9 +20,19 @@ const SellerLayOut = () => {
         { name: "Orders", path: "Orders", icon: assets.order_icon },
     ];
 
-    const logOut = () => {
-        setIsSeller(false);
-        navigate("/");
+    const logOut = async () => {
+        try {
+            const { data } = await axios.get('/api/seller/logout')
+            if (data.success) {
+                setIsSeller(false)
+                toast.success(data.message)
+                navigate("/");
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     };
 
     if (!isSeller) return null;

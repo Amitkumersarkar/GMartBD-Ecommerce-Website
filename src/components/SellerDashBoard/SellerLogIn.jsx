@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+// import axios from "axios";
 
 const SellerLogIn = () => {
-    const { isSeller, setIsSeller } = useAuthContext();
+    const { isSeller, setIsSeller, axios } = useAuthContext();
     const navigate = useNavigate();
 
     // default credentials
@@ -12,16 +13,31 @@ const SellerLogIn = () => {
     const [password, setPassword] = useState("123456");
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        if (email === "seller@gmail.com" && password === "123456") {
-            setIsSeller(true);
-            toast.success("Seller login successful 🚀");
-        } else {
-            toast.error("Invalid email or password ❌");
+    //     if (email === "seller@gmail.com" && password === "123456") {
+    //         setIsSeller(true);
+    //         toast.success("Seller login successful 🚀");
+    //     } else {
+    //         toast.error("Invalid email or password ❌");
+    //     }
+    // };
+
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            const { data } = await axios.post('/api/seller/login', { email, password })
+            if (data.success) {
+                setIsSeller(true)
+                navigate('/seller')
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(data.message)
         }
-    };
+    }
 
     useEffect(() => {
         if (isSeller) {

@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
+import axios from "axios";
+
 
 export const AuthContext = createContext(null);
 
@@ -120,6 +122,7 @@ export const AuthContextProvider = ({ children }) => {
         getCartAmount,
         searchQuery,
         setSearchQuery,
+        axios
     };
 
     return (

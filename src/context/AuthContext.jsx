@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { dummyProducts } from "../assets/assets";
+// import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -11,25 +11,48 @@ export const AuthContext = createContext(null);
 export const AuthContextProvider = ({ children }) => {
     const currency = import.meta.env.VITE_CURRENCY;
 
-    /* Auth State */
     const [user, setUser] = useState(false);
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
 
-    /* Product & Cart State */
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [searchQuery, setSearchQuery] = useState("");
 
-    /* Helper function */
     const cloneCart = () =>
         typeof structuredClone === "function"
             ? structuredClone(cartItems)
             : { ...cartItems };
 
-    /* Fetch Products functions*/
+    /* Seller Status */
+    const fetchSellerStatus = async () => {
+        try {
+            const { data } = await axios.get('/api/seller/is-auth');
+            if (data.success) {
+                setIsSeller(true)
+            } else {
+                setIsSeller(false)
+            }
+        } catch (error) {
+            setIsSeller(false)
+        }
+    }
+
+    // fetch user auth status
+    const fetchUser = async () => {
+        try {
+            const { data } = await axios.get('/api/user/is-auth');
+            if (data.success) {
+                setUser(data.user)
+                setCartItems(data.user.cartItems || {})
+            }
+        } catch (error) {
+            setUser(null)
+        }
+    }
+
+    /* Fetch Products */
     const fetchProducts = async () => {
-        // setProducts(dummyProducts);
         try {
             const { data } = await axios.get('/api/product/list')
             if (data.success) {
@@ -44,15 +67,8 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchProducts();
+        fetchUser();
     }, []);
-
-    /* Cart Actions */
-    // const addToCart = (itemId) => {
-    //     const cartData = cloneCart();
-    //     cartData[itemId] = (cartData[itemId] || 0) + 1;
-    //     setCartItems(cartData);
-    //     toast.success("Added to cart");
-    // };
 
     const addToCart = (product, callback) => {
         setCartItems(prev => {
@@ -79,7 +95,6 @@ export const AuthContextProvider = ({ children }) => {
         toast.success("Removed from cart");
     };
 
-    // prevents spam
     const updateCartItem = (itemId, quantity) => {
         const cartData = cloneCart();
 
@@ -92,7 +107,6 @@ export const AuthContextProvider = ({ children }) => {
         setCartItems(cartData);
     };
 
-    /* Cart Calculations */
     const getCartCount = () => {
         return Object.values(cartItems).reduce(
             (total, qty) => total + qty,
@@ -116,7 +130,6 @@ export const AuthContextProvider = ({ children }) => {
         return Math.round(total * 100) / 100;
     };
 
-    /* Context Value*/
     const value = {
         user,
         setUser,
@@ -135,6 +148,8 @@ export const AuthContextProvider = ({ children }) => {
         searchQuery,
         setSearchQuery,
         fetchProducts,
+        fetchSellerStatus,
+        fetchUser,
         axios
     };
 
@@ -145,7 +160,6 @@ export const AuthContextProvider = ({ children }) => {
     );
 };
 
-/*Custom Hook*/
 export const useAuthContext = () => {
     const context = useContext(AuthContext);
 

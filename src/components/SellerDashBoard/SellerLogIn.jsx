@@ -2,28 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+
 const SellerLogIn = () => {
-    const { isSeller, setIsSeller, axios } = useAuthContext();
+    const { isSeller, setIsSeller, axios, fetchSellerStatus } = useAuthContext();
     const navigate = useNavigate();
 
     // default credentials
     const [email, setEmail] = useState("seller@gmail.com");
     const [password, setPassword] = useState("123456");
     const [showPassword, setShowPassword] = useState(false);
-
-    // Fetch seller status
-    const fetchSeller = async () => {
-        try {
-            const { data } = await axios.get('/api/seller/is-auth');
-            if (data.success) {
-                setIsSeller(true)
-            } else {
-                setIsSeller(false)
-            }
-        } catch (error) {
-            setIsSeller(false)
-        }
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +21,6 @@ const SellerLogIn = () => {
             if (data.success) {
                 setIsSeller(true)
                 toast.success("Seller login successful 🚀")
-                navigate('/sellerDashBoard')
             } else {
                 toast.error(data.message)
             }
@@ -45,7 +31,7 @@ const SellerLogIn = () => {
     }
 
     useEffect(() => {
-        fetchSeller()
+        fetchSellerStatus()
     }, [])
 
     useEffect(() => {
@@ -73,7 +59,6 @@ const SellerLogIn = () => {
                     className="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-pink-600"
                 />
 
-                {/* Password with show/hide options*/}
                 <div className="w-full relative">
                     <input
                         type={showPassword ? "text" : "password"}

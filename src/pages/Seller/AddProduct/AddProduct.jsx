@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { assets, categories } from "../../../assets/assets";
+import { useAuthContext } from "../../../context/AuthContext";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
     const [files, setFiles] = useState([]);
@@ -8,6 +10,7 @@ const AddProduct = () => {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
     const [offerPrice, setOfferPrice] = useState('');
+    const { axios } = useAuthContext();
 
     const onSubmitHandler = async (e) => {
         try {
@@ -24,7 +27,21 @@ const AddProduct = () => {
             for (let i = 0; i < files.length; i++) {
                 formData.append('images', files[i])
             }
+            // api call here
+            const { data } = await axios.post('/api/product/add', formData)
+            if (data.success) {
+                toast.success(data.message);
+                setName('');
+                setDescription('')
+                setCategory('')
+                setPrice('')
+                setOfferPrice('')
+                setFiles([])
+            } else {
+                toast.error(data.message)
+            }
         } catch (error) {
+            toast.error(error.message)
 
         }
     }

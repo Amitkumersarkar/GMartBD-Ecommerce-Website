@@ -10,12 +10,12 @@ const ProductCategory = () => {
     if (!category) return null;
 
     const searchCategory = categories.find(
-        (item) => item.path.toLowerCase() === category.toLowerCase()
+        (item) => String(item.path).toLowerCase() === category.toLowerCase()
     );
 
     const filteredProducts = products.filter(
         (product) =>
-            product.category?.toLowerCase() === category.toLowerCase()
+            String(product.category).toLowerCase() === category.toLowerCase()
     );
 
     return (

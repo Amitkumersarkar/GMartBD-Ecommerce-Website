@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 const LogIn = () => {
-    const { setShowUserLogin, setUser } = useAuthContext();
+    const { setShowUserLogin, setUser, axios } = useAuthContext();
 
     const [state, setState] = useState("login");
     const [name, setName] = useState("");
@@ -11,16 +12,36 @@ const LogIn = () => {
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setUser({
-            email: 'dummy@gmail.com',
-            name: 'dummy'
+        // setUser({
+        //     email: 'dummy@gmail.com',
+        //     name: 'dummy'
 
-        })
+        // })
 
-        toast.success("Login successful");
+        try {
+            e.preventDefault();
+            // api call here
+            const { data } = await axios.post(`/api/user/${state}`, {
+                name, email, password
+            });
+            if (data.success) {
+                Navigate('/')
+                setUser(data.user)
+                setShowUserLogin(false);
 
-        setShowUserLogin(false);
+            } else {
+                toast.error(data.message)
+            }
+
+
+
+        } catch (error) {
+            toast.error(error.message)
+
+        }
+
+        // toast.success("Login successful");
+
     }
 
     return (

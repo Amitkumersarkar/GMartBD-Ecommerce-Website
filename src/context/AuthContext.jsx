@@ -70,6 +70,25 @@ export const AuthContextProvider = ({ children }) => {
         fetchUser();
     }, []);
 
+    // updated database cart items
+    useEffect(() => {
+        const updateCart = async () => {
+            try {
+                const { data } = await axios.post('/api/cart/update', { cartItems })
+                if (!data.success)
+                    toast.error(data.message)
+            } catch (error) {
+                toast.error(error.message)
+
+            }
+        }
+
+        if (user) {
+            updateCart()
+        }
+    }, [cartItems])
+
+
     const addToCart = (product, callback) => {
         setCartItems(prev => {
             const updated = { ...prev };

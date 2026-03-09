@@ -29,14 +29,8 @@ const ProductCard = ({ product }) => {
     return (
         <div
             onClick={() => {
-                // Safely handle category for navigation
                 const categoryStr =
-                    typeof product.category === "string"
-                        ? product.category
-                        : Array.isArray(product.category)
-                            ? product.category[0]
-                            : "";
-
+                    Array.isArray(product.category) ? product.category[0] : product.category;
                 navigate(`/Products/${categoryStr.toLowerCase()}/${product._id}`);
                 window.scrollTo(0, 0);
             }}
@@ -45,18 +39,19 @@ const ProductCard = ({ product }) => {
             <div className="group flex items-center justify-center px-2">
                 <img
                     className="group-hover:scale-105 transition max-w-26 md:max-w-36"
-                    src={product.image[0]}
+                    src={Array.isArray(product.image) ? product.image[0] : product.image}
                     alt={product.name}
                 />
             </div>
 
             {/* Product Info */}
             <div className="text-gray-500/60 text-sm mt-2">
-                <p>{product.category}</p>
+                <p>{Array.isArray(product.category) ? product.category[0] : product.category}</p>
                 <p className="text-gray-700 font-medium text-lg truncate w-full">
                     {product.name}
                 </p>
 
+                {/* Rating */}
                 <div className="flex items-center gap-0.5 mt-1">
                     {Array(5)
                         .fill("")
@@ -71,6 +66,7 @@ const ProductCard = ({ product }) => {
                     <p>(4)</p>
                 </div>
 
+                {/* Price */}
                 <div className="flex items-end justify-between mt-3">
                     <p className="md:text-xl text-base font-medium text-pink-500">
                         {currency} {product.offerPrice}{" "}
@@ -81,7 +77,6 @@ const ProductCard = ({ product }) => {
 
                     {/* Add / Increment / Decrement products */}
                     <div
-                        // prevent card navigation
                         onClick={(e) => e.stopPropagation()}
                         className="text-pink-500"
                     >

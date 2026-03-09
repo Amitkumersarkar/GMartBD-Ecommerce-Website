@@ -33,13 +33,17 @@ const ProductDetails = () => {
 
     const handleRating = (index) => setRating(index + 1);
 
-    const images = [product.image, product.image, product.image];
+    // Ensure images is always an array
+    const images = Array.isArray(product.image) ? product.image : [product.image];
 
+    // Related products: safely check category
     const relatedProducts = products.filter(
-        (p) => p.category === product.category && p._id !== product._id
+        (p) =>
+            (typeof p.category === "string" ? p.category : "") ===
+            (typeof product.category === "string" ? product.category : "") &&
+            p._id !== product._id
     );
 
-    // Select related product dynamically
     const selectRelatedProduct = (p) => {
         setProduct(p);
         setSelectedImage(0);
@@ -48,10 +52,7 @@ const ProductDetails = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const formatPrice = (price) => {
-        return price.toLocaleString("en-BD");
-    };
-
+    const formatPrice = (price) => price.toLocaleString("en-BD");
 
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6">
@@ -126,22 +127,6 @@ const ProductDetails = () => {
                         </ul>
                     </div>
 
-                    {/* <div className="flex items-center gap-2 mt-4">
-                        <button
-                            onClick={() => handleQuantity("dec")}
-                            className="px-3 py-1 border rounded shadow hover:bg-gray-100 transition"
-                        >
-                            -
-                        </button>
-                        <span className="px-4 py-1 border-t border-b">{quantity}</span>
-                        <button
-                            onClick={() => handleQuantity("inc")}
-                            className="px-3 py-1 border rounded shadow hover:bg-gray-100 transition"
-                        >
-                            +
-                        </button>
-                    </div> */}
-
                     <div className="flex gap-4 mt-6 flex-wrap">
                         <button
                             onClick={() => {
@@ -167,7 +152,6 @@ const ProductDetails = () => {
             {relatedProducts.length > 0 && (
                 <div className="mt-16 ">
                     <div className="flex flex-col items-end w-max mb-4">
-
                         <h2 className="text-2xl font-medium uppercase text-black ">Related Products</h2>
                         <div className="w-16 h-0.5 bg-pink-600 rounded-full "></div>
                     </div>
@@ -180,7 +164,7 @@ const ProductDetails = () => {
                                 onClick={() => selectRelatedProduct(p)}
                             >
                                 <img
-                                    src={p.image}
+                                    src={Array.isArray(p.image) ? p.image[0] : p.image}
                                     alt={p.name}
                                     className="w-full h-48 object-cover hover:scale-105 transition-transform"
                                 />

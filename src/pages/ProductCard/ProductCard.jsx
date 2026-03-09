@@ -29,7 +29,15 @@ const ProductCard = ({ product }) => {
     return (
         <div
             onClick={() => {
-                navigate(`/Products/${product.category.toLowerCase()}/${product._id}`);
+                // Safely handle category for navigation
+                const categoryStr =
+                    typeof product.category === "string"
+                        ? product.category
+                        : Array.isArray(product.category)
+                            ? product.category[0]
+                            : "";
+
+                navigate(`/Products/${categoryStr.toLowerCase()}/${product._id}`);
                 window.scrollTo(0, 0);
             }}
             className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full cursor-pointer"

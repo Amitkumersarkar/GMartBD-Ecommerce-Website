@@ -7,19 +7,36 @@ import GMartLogo from "../../assets/GMartLogo.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user, setUser, setShowUserLogin, searchQuery, setSearchQuery, getCartCount } = useAuthContext();
+    const { user, setUser, setShowUserLogin, searchQuery, setSearchQuery, getCartCount, axios } = useAuthContext();
     const navigate = useNavigate();
     const profileRef = useRef(null);
     const [profileOpen, setProfileOpen] = useState(false);
     const location = useLocation();
 
 
-    const handleLogOut = () => {
-        setUser(null);
-        navigate("/");
-        setProfileOpen(false);
-        toast.success('Logout successful');
-    };
+    // const handleLogOut = () => {
+    //     setUser(null);
+    //     navigate("/");
+    //     setProfileOpen(false);
+    //     toast.success('Logout successful');
+    // };
+
+    const handleLogOut = async () => {
+        try {
+            const { data } = await axios.post('/api/user/logout');
+
+            if (data.success) {
+                toast.success(data.message);
+                setUser(null);
+                navigate("/");
+            } else {
+                toast.error(data.message);
+            }
+
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {

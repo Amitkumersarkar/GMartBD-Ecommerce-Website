@@ -27,9 +27,19 @@ export const AuthContextProvider = ({ children }) => {
             ? structuredClone(cartItems)
             : { ...cartItems };
 
-    /* Dummy Products*/
+    /* Fetch Products functions*/
     const fetchProducts = async () => {
-        setProducts(dummyProducts);
+        // setProducts(dummyProducts);
+        try {
+            const { data } = await axios.get('/api/product/list')
+            if (data.success) {
+                setProducts(data.products)
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     };
 
     useEffect(() => {
@@ -124,6 +134,7 @@ export const AuthContextProvider = ({ children }) => {
         getCartAmount,
         searchQuery,
         setSearchQuery,
+        fetchProducts,
         axios
     };
 

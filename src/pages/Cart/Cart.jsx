@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-import { assets, dummyAddress } from "../../assets/assets";
+import { assets } from "../../assets/assets";
 import toast from "react-hot-toast";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Initialize Stripe 
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 const Cart = () => {
     const [showAddress, setShowAddress] = useState(false);
@@ -18,19 +22,19 @@ const Cart = () => {
         setCartItems,
         updateCartItem,
         axios,
-        user
+        user,
     } = useAuthContext();
 
     const [cartArray, setCartArray] = useState([]);
-    const [addresses] = useState([]);
+    const [addresses, setAddresses] = useState([]);
     const [selectedAddress, setSelectedAddress] = useState(null);
     const [paymentOption, setPaymentOption] = useState("COD");
 
+    // Generate cart array with product details
     const getCart = () => {
         let tempArray = [];
-
         for (const key in cartItems) {
-            const product = products.find(item => item._id === key);
+            const product = products.find((item) => item._id === key);
             if (product) {
                 tempArray.push({
                     ...product,
@@ -41,69 +45,82 @@ const Cart = () => {
         setCartArray(tempArray);
     };
 
+    // Get user addresses
     const getUserAddress = async () => {
         try {
-            const { data } = await axios.get('/api/address/get')
+            const { data } = await axios.get("/api/address/get");
             if (data.success) {
-                setSelectedAddress(data.addresses)
-                if (data.addresses.length > 0) {
-                    setSelectedAddress(data.addresses[0])
-                }
+                setAddresses(data.addresses);
+                setSelectedAddress(data.addresses[0] || null);
             } else {
-                toast.error(data.message)
+                toast.error(data.message);
             }
         } catch (error) {
-            toast.error(error.message)
-
+            toast.error(error.message);
         }
-    }
+    };
 
     useEffect(() => {
-        if (products.length && cartItems) {
-            getCart();
-        }
+        if (products.length && cartItems) getCart();
     }, [products, cartItems]);
 
     useEffect(() => {
-        if (user) {
-            getUserAddress()
-        }
-    }, [user])
+        if (user) getUserAddress();
+    }, [user]);
 
+    // Place order function
     const placeOrder = async () => {
         try {
-            if (!selectedAddress) {
-                return toast.error("Please select an address")
-            }
-            // place order with COD
+            if (!selectedAddress) return toast.error("Please select an address");
+
+            // Cash on Delivery
             if (paymentOption === "COD") {
-                const { data } = await axios.post('/api/order/cod', {
+                const { data } = await axios.post("/api/order/cod", {
                     userId: user._id,
-                    items: cartArray.map(item => ({ product: item._id, quantity: item.quantity })),
-                    address: selectedAddress._id
-                })
+                    items: cartArray.map((item) => ({
+                        product: item._id,
+                        quantity: item.quantity,
+                    })),
+                    address: selectedAddress._id,
+                });
+
                 if (data.success) {
-                    toast.success(data.message)
-                    setCartItems({})
-                    navigate('/myOrders')
+                    toast.success(data.message);
+                    setCartItems({});
+                    navigate("/myOrders");
                 } else {
-                    toast.error(data.message)
+                    toast.error(data.message);
+                }
+            } else {
+                // Online Payment via Stripe
+                const { data } = await axios.post("/api/order/stripe", {
+                    userId: user._id,
+                    items: cartArray.map((item) => ({
+                        product: item._id,
+                        quantity: item.quantity,
+                    })),
+                    address: selectedAddress._id,
+                });
+
+                if (data.success) {
+                    const stripe = await stripePromise;
+                    await stripe.redirectToCheckout({ sessionId: data.sessionId });
+                } else {
+                    toast.error(data.message);
                 }
             }
         } catch (error) {
-            toast.error(error.message)
+            toast.error(error.message);
         }
     };
 
     return products.length && cartItems ? (
         <div className="flex flex-col md:flex-row mt-16">
-            {/* LEFT */}
+            {/* LEFT - Product List */}
             <div className="flex-1 max-w-4xl">
                 <h1 className="text-3xl font-medium mb-6">
                     Shopping Cart{" "}
-                    <span className="text-sm text-pink-600">
-                        {getCartCount()} Items
-                    </span>
+                    <span className="text-sm text-pink-600">{getCartCount()} Items</span>
                 </h1>
 
                 <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
@@ -112,7 +129,7 @@ const Cart = () => {
                     <p className="text-center">Action</p>
                 </div>
 
-                {cartArray.map(product => (
+                {cartArray.map((product) => (
                     <div
                         key={product._id}
                         className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3"
@@ -135,40 +152,24 @@ const Cart = () => {
                             </div>
 
                             <div>
-                                <p className="hidden md:block font-semibold">
-                                    {product.name}
-                                </p>
-
+                                <p className="hidden md:block font-semibold">{product.name}</p>
                                 <div className="font-normal text-gray-500/70">
                                     <p>
-                                        Weight:{" "}
-                                        <span>{product.Weight || "N/A"}</span>
+                                        Weight: <span>{product.Weight || "N/A"}</span>
                                     </p>
-
                                     <div className="flex items-center">
                                         <p>Qty:</p>
                                         <select
                                             value={product.quantity}
-                                            onChange={e =>
-                                                updateCartItem(
-                                                    product._id,
-                                                    Number(e.target.value)
-                                                )
+                                            onChange={(e) =>
+                                                updateCartItem(product._id, Number(e.target.value))
                                             }
                                             className="outline-none"
                                         >
                                             {Array.from(
-                                                {
-                                                    length: Math.max(
-                                                        9,
-                                                        product.quantity
-                                                    ),
-                                                },
+                                                { length: Math.max(9, product.quantity) },
                                                 (_, i) => (
-                                                    <option
-                                                        key={i}
-                                                        value={i + 1}
-                                                    >
+                                                    <option key={i} value={i + 1}>
                                                         {i + 1}
                                                     </option>
                                                 )
@@ -185,9 +186,7 @@ const Cart = () => {
                         </p>
 
                         <button
-                            onClick={() =>
-                                removeFromCart(product._id)
-                            }
+                            onClick={() => removeFromCart(product._id)}
                             className="cursor-pointer mx-auto"
                         >
                             <img
@@ -215,17 +214,13 @@ const Cart = () => {
                 </button>
             </div>
 
-            {/* RIGHT */}
+            {/* RIGHT - Order Summary */}
             <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
-                <h2 className="text-xl md:text-xl font-medium">
-                    Order Summary
-                </h2>
+                <h2 className="text-xl md:text-xl font-medium">Order Summary</h2>
                 <hr className="border-gray-300 my-5" />
 
                 <div className="mb-6">
-                    <p className="text-sm font-medium uppercase">
-                        Delivery Address
-                    </p>
+                    <p className="text-sm font-medium uppercase">Delivery Address</p>
 
                     <div className="relative flex justify-between items-start mt-2">
                         <p className="text-gray-500">
@@ -235,16 +230,14 @@ const Cart = () => {
                         </p>
 
                         <button
-                            onClick={() =>
-                                setShowAddress(!showAddress)
-                            }
+                            onClick={() => setShowAddress(!showAddress)}
                             className="text-pink-600 hover:underline cursor-pointer"
                         >
                             Change
                         </button>
 
                         {showAddress && (
-                            <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
+                            <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full z-50">
                                 {addresses.map((address, index) => (
                                     <p
                                         key={index}
@@ -254,11 +247,9 @@ const Cart = () => {
                                         }}
                                         className="text-gray-500 p-2 hover:bg-gray-100 cursor-pointer"
                                     >
-                                        {address.street},{address.city},
-                                        {address.state},{address.country}
+                                        {address.street}, {address.city}, {address.state}, {address.country}
                                     </p>
                                 ))}
-
                                 <p
                                     onClick={() => {
                                         navigate("/add-address");
@@ -272,14 +263,10 @@ const Cart = () => {
                         )}
                     </div>
 
-                    <p className="text-sm font-medium uppercase mt-6">
-                        Payment Method
-                    </p>
+                    <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
 
                     <select
-                        onChange={e =>
-                            setPaymentOption(e.target.value)
-                        }
+                        onChange={(e) => setPaymentOption(e.target.value)}
                         className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none"
                     >
                         <option value="COD">Cash On Delivery</option>
@@ -324,9 +311,7 @@ const Cart = () => {
                     onClick={placeOrder}
                     className="w-full py-3 mt-6 cursor-pointer bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition"
                 >
-                    {paymentOption === "COD"
-                        ? "Place Order"
-                        : "Proceed to Checkout"}
+                    {paymentOption === "COD" ? "Place Order" : "Proceed to Checkout"}
                 </button>
             </div>
         </div>

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { assets } from "../../assets/assets";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const InputField = ({ type, placeholder, name, handleChange, address }) => (
     <input
@@ -26,6 +28,9 @@ const AddAddress = () => {
         phone: "",
     };
 
+    const { axios, user } = useAuthContext();
+    const navigate = useNavigate();
+
     const [address, setAddress] = useState(initialAddress);
 
     const handleChange = (e) => {
@@ -36,15 +41,32 @@ const AddAddress = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const { data } = await axios.post('/api/address/add', { address });
+            if (data.success) {
+                toast.success(data.message)
+                navigate('/cart')
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
 
+        }
         // console.log("Saved address:", address);
 
-        toast.success("Address saved successfully!");
+        // toast.success("Address saved successfully!");
 
-        setAddress(initialAddress);
+        // setAddress(initialAddress);
     };
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/cart')
+        }
+    }, [])
 
     return (
         <div className="mt-16 pb-16">

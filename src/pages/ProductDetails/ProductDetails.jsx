@@ -13,6 +13,7 @@ const ProductDetails = () => {
     const [selectedImage, setSelectedImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [rating, setRating] = useState(4);
+    const [showAllRelated, setShowAllRelated] = useState(false);
 
     useEffect(() => {
         const found = products.find((p) => p._id === id);
@@ -41,6 +42,10 @@ const ProductDetails = () => {
             (typeof product.category === "string" ? product.category : "") &&
             p._id !== product._id
     );
+
+    const visibleRelatedProducts = showAllRelated
+        ? relatedProducts
+        : relatedProducts.slice(0, 4);
 
     const selectRelatedProduct = (p) => {
         setProduct(p);
@@ -113,7 +118,7 @@ const ProductDetails = () => {
                         <span className="text-gray-600 ml-2">{rating} / 5</span>
                     </div>
 
-                    {/* PRICE SECTION FIXED */}
+                    {/* PRICE SECTION */}
                     <div>
                         <div className="flex items-center gap-3 mt-2">
                             <p className="text-xl text-pink-600 font-semibold">
@@ -173,7 +178,7 @@ const ProductDetails = () => {
                     </div>
 
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {relatedProducts.map((p) => (
+                        {visibleRelatedProducts.map((p) => (
                             <div
                                 key={p._id}
                                 className="border rounded-lg border-none overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
@@ -204,13 +209,16 @@ const ProductDetails = () => {
                         ))}
                     </div>
 
-                    <div className="mt-6 text-center">
-                        <NavLink to="/Products">
-                            <button className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition">
+                    {!showAllRelated && relatedProducts.length > 4 && (
+                        <div className="mt-6 text-center">
+                            <button
+                                onClick={() => setShowAllRelated(true)}
+                                className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition"
+                            >
                                 See More
                             </button>
-                        </NavLink>
-                    </div>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

@@ -154,6 +154,7 @@ export const AuthContextProvider = ({ children }) => {
         getCartCount,
         getCartAmount,
         searchQuery,
+        setCartItems,
         setSearchQuery,
         fetchProducts,
         fetchSellerStatus,

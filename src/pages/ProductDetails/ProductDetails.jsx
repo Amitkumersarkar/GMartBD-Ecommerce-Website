@@ -33,10 +33,8 @@ const ProductDetails = () => {
 
     const handleRating = (index) => setRating(index + 1);
 
-    // Ensure images is always an array
     const images = Array.isArray(product.image) ? product.image : [product.image];
 
-    // Related products: safely check category
     const relatedProducts = products.filter(
         (p) =>
             (typeof p.category === "string" ? p.category : "") ===
@@ -75,6 +73,7 @@ const ProductDetails = () => {
                             className="w-full h-[400px] object-cover transform transition-transform duration-300 hover:scale-110"
                         />
                     </div>
+
                     <div className="flex gap-2 mt-3">
                         {images.map((img, idx) => (
                             <img
@@ -92,6 +91,7 @@ const ProductDetails = () => {
                 {/* Product Info */}
                 <div className="flex flex-col gap-4">
                     <h1 className="text-3xl font-semibold">{product.name}</h1>
+
                     <div className="flex items-center gap-2">
                         {Array(5)
                             .fill(0)
@@ -112,12 +112,24 @@ const ProductDetails = () => {
                             )}
                         <span className="text-gray-600 ml-2">{rating} / 5</span>
                     </div>
+
+                    {/* PRICE SECTION FIXED */}
                     <div>
-                        <p className="text-xl mt-2 text-pink-600 font-semibold">
-                            MRP: {currency} {formatPrice(product.price)}
-                        </p>
+                        <div className="flex items-center gap-3 mt-2">
+                            <p className="text-xl text-pink-600 font-semibold">
+                                {currency} {formatPrice(product.offerPrice || product.price)}
+                            </p>
+
+                            {product.offerPrice && (
+                                <p className="text-gray-400 line-through">
+                                    {currency} {formatPrice(product.price)}
+                                </p>
+                            )}
+                        </div>
+
                         <p className="text-sm text-gray-500">(inclusive of all taxes)</p>
                     </div>
+
                     <div>
                         <h1 className="text-xl">About Product</h1>
                         <ul className="mt-4 text-gray-600 list-disc pl-5">
@@ -137,6 +149,7 @@ const ProductDetails = () => {
                         >
                             Add to Cart
                         </button>
+
                         <button
                             onClick={() =>
                                 addToCart({ ...product, quantity }, () => navigate("/cart"))
@@ -149,11 +162,14 @@ const ProductDetails = () => {
                 </div>
             </div>
 
+            {/* RELATED PRODUCTS */}
             {relatedProducts.length > 0 && (
-                <div className="mt-16 ">
+                <div className="mt-16">
                     <div className="flex flex-col items-end w-max mb-4">
-                        <h2 className="text-2xl font-medium uppercase text-black ">Related Products</h2>
-                        <div className="w-16 h-0.5 bg-pink-600 rounded-full "></div>
+                        <h2 className="text-2xl font-medium uppercase text-black">
+                            Related Products
+                        </h2>
+                        <div className="w-16 h-0.5 bg-pink-600 rounded-full"></div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -168,16 +184,31 @@ const ProductDetails = () => {
                                     alt={p.name}
                                     className="w-full h-48 object-cover hover:scale-105 transition-transform"
                                 />
+
                                 <div className="p-3">
                                     <h3 className="font-semibold">{p.name}</h3>
-                                    <p className="text-pink-600 font-bold">Tk {formatPrice(p.price)}</p>
+
+                                    <div className="flex items-center gap-2">
+                                        <p className="text-pink-600 font-bold">
+                                            {currency} {formatPrice(p.offerPrice || p.price)}
+                                        </p>
+
+                                        {p.offerPrice && (
+                                            <p className="text-gray-400 line-through text-sm">
+                                                {currency} {formatPrice(p.price)}
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
                     <div className="mt-6 text-center">
-                        <NavLink to='/Products'>
-                            <button className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition">See More</button>
+                        <NavLink to="/Products">
+                            <button className="inline-block px-8 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition">
+                                See More
+                            </button>
                         </NavLink>
                     </div>
                 </div>

@@ -219,25 +219,28 @@ const Cart = () => {
                 <h2 className="text-xl md:text-xl font-medium">Order Summary</h2>
                 <hr className="border-gray-300 my-5" />
 
+                {/* Delivery Address */}
                 <div className="mb-6">
                     <p className="text-sm font-medium uppercase">Delivery Address</p>
 
-                    <div className="relative flex justify-between items-start mt-2">
-                        <p className="text-gray-500">
-                            {selectedAddress
-                                ? `${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country}`
-                                : "No address found"}
-                        </p>
+                    <div className="relative mt-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <p className="text-gray-500 break-words">
+                                {selectedAddress
+                                    ? `${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country}`
+                                    : "No address found"}
+                            </p>
 
-                        <button
-                            onClick={() => setShowAddress(!showAddress)}
-                            className="text-pink-600 hover:underline cursor-pointer"
-                        >
-                            Change
-                        </button>
+                            <button
+                                onClick={() => setShowAddress(!showAddress)}
+                                className="text-pink-600 hover:underline whitespace-nowrap"
+                            >
+                                Change
+                            </button>
+                        </div>
 
                         {showAddress && (
-                            <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full z-50">
+                            <div className="absolute top-12 left-0 right-0 py-1 bg-white border border-gray-300 text-sm z-50 shadow-md max-h-60 overflow-y-auto">
                                 {addresses.map((address, index) => (
                                     <p
                                         key={index}
@@ -245,7 +248,7 @@ const Cart = () => {
                                             setSelectedAddress(address);
                                             setShowAddress(false);
                                         }}
-                                        className="text-gray-500 p-2 hover:bg-gray-100 cursor-pointer"
+                                        className="text-gray-500 p-2 hover:bg-gray-100 cursor-pointer break-words"
                                     >
                                         {address.street}, {address.city}, {address.state}, {address.country}
                                     </p>
@@ -263,15 +266,17 @@ const Cart = () => {
                         )}
                     </div>
 
+                    {/* Payment Method */}
                     <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
-
-                    <select
-                        onChange={(e) => setPaymentOption(e.target.value)}
-                        className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none"
-                    >
-                        <option value="COD">Cash On Delivery</option>
-                        <option value="Online">Online Payment</option>
-                    </select>
+                    <div className="mt-2">
+                        <select
+                            onChange={(e) => setPaymentOption(e.target.value)}
+                            className="w-full sm:w-auto border border-gray-300 bg-white px-3 py-2 outline-none rounded-md"
+                        >
+                            <option value="COD">Cash On Delivery</option>
+                            <option value="Online">Online Payment</option>
+                        </select>
+                    </div>
                 </div>
 
                 <hr className="border-gray-300" />

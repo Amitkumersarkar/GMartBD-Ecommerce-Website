@@ -27,7 +27,7 @@ const AllProducts = () => {
 
             {filteredProducts.length > 0 ? (
                 // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 md:gap-6 mt-6">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-5 md:gap-6 mt-6">
 
                     {filteredProducts
                         .filter((product) => product.inStock)

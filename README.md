@@ -1,7 +1,6 @@
 🛒 G-MartBD | Full-Stack E-Commerce
 G-MartBD is a high-performance e-commerce platform built on the MERN Stack . It offers a seamless shopping experience with real-time updates, secure payments, and a mobile-first responsive design.
 
-![alt text](licensed-image.jfif)
 
 ---
 
@@ -60,7 +59,6 @@ G-MartBD/
     ├── middlewares/     # Auth & Error handling
     └── server.js        # Entry point
 
-
    ---
 
 ⚙️ Installation & Setup
@@ -114,7 +112,7 @@ Amit Sarkar
 
 Full-stack Developer
 
-GitHub[https://github.com/Amitkumersarkar]|LinkedIn [https://www.linkedin.com/in/amit-sarkar-63504b252/]
+GitHub : https://github.com/Amitkumersarkar|LinkedIn : https://www.linkedin.com/in/amit-sarkar-63504b252/
 
 📄 License
 This project is licensed under the ISC License .

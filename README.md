@@ -36,6 +36,7 @@
 ### Cart & Checkout
 ![Cart & Checkout](https://i.ibb.co.com/YBhZFpQM/image.png)
 
+Please Visit the live link to explore full functionalities
 ---
 
 ## 🔗 Live Demo
@@ -50,7 +51,7 @@
 ### Frontend
 
 - **React.js (v19)** – Component-based UI  
-- **Tailwind CSS & DaisyUI** – Styling and responsive components  
+- **Tailwind CSS & DaisyUI & PrebuiltUI** – Styling and responsive components  
 - **React Router DOM** – Client-side routing  
 - **Axios** – HTTP requests  
 - **LocalForage** – Local storage caching  
@@ -132,6 +133,9 @@ CLOUDINARY_API_SECRET=your_api_secret
 Frontend .env
 VITE_BACKEND_URL=http://localhost:5000
 VITE_CURRENCY=$
+
+-----
+
 💻 Scripts
 Frontend
 npm run dev      # Start development server

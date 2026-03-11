@@ -40,7 +40,7 @@
 
 ## 🔗 Live Demo
 
-- **Frontend:** [https://your-frontend-demo.vercel.app]((https://g-martbd.vercel.app/))  
+- **Frontend:** [https://your-frontend-demo.vercel.app](https://g-martbd.vercel.app/)
 - **Backend:** [https://your-backend-demo.onrender.com](https://g-mart-bd-server.vercel.app/)
 
 ---
@@ -101,7 +101,6 @@ g-martbd-server/
 ---
 
 ## 🚀 Installation
-
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/your-username/g-martbd.git
@@ -117,7 +116,8 @@ cd g-martbd-server
 npm install
 npm run server
 
-----
+
+---
 
 Backend runs at http://localhost:3500
 
@@ -165,3 +165,7 @@ Amit Sarkar – Full-stack developer
 📄 License
 
 This project is licensed under the ISC License.
+
+
+
+

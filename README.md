@@ -1,118 +1,155 @@
-🛒 G-MartBD | Full-Stack E-Commerce
-G-MartBD is a high-performance e-commerce platform built on the MERN Stack . It offers a seamless shopping experience with real-time updates, secure payments, and a mobile-first responsive design.
+# G-MartBD
+
+[![React](https://img.shields.io/badge/React-19.2-blue?logo=react)](https://reactjs.org/)  
+[![Node.js](https://img.shields.io/badge/Node.js-18.16-green?logo=node.js)](https://nodejs.org/)  
+[![MongoDB](https://img.shields.io/badge/MongoDB-7.1.0-brightgreen?logo=mongodb)](https://www.mongodb.com/)  
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.18-blue?logo=tailwind-css)](https://tailwindcss.com/)  
+[![Stripe](https://img.shields.io/badge/Stripe-Payment-purple?logo=stripe)](https://stripe.com/)  
+
+**G-MartBD** is a full-stack MERN e-commerce platform for online shopping. Users can browse products, manage carts, place orders, and make payments securely. The project features a modern responsive UI with advanced functionality for a complete shopping experience.
+
+---
+
+## 🌟 Features
+
+- ✅ User authentication (signup/login) with JWT  
+- ✅ Browse products by category, search, and sort  
+- ✅ Add to cart and wishlist with persistent storage  
+- ✅ Checkout with **Cash-on-Delivery** or **Stripe payments**  
+- ✅ Address management for orders  
+- ✅ Toast notifications for actions (success/error)  
+- ✅ Responsive design for desktop and mobile  
+
+---
+
+## 🖥️ Screenshots
+
+### Home Page
+![Home Page](https://via.placeholder.com/800x400.png?text=Home+Page)
+
+### Product Listing
+![Product Listing](https://via.placeholder.com/800x400.png?text=Product+Listing)
+
+### Cart & Checkout
+![Cart & Checkout](https://via.placeholder.com/800x400.png?text=Cart+%26+Checkout)
+
+---
+
+## 🔗 Live Demo
+
+- **Frontend:** [https://your-frontend-demo.vercel.app]([https://your-frontend-demo.vercel.app](https://g-martbd.vercel.app/))  
+- **Backend:** [https://your-backend-demo.onrender.com]([https://your-backend-demo.onrender.com)](https://g-mart-bd-server.vercel.app/)
+
+---
+
+## ⚙️ Tech Stack
+
+### Frontend
+
+- **React.js (v19)** – Component-based UI  
+- **Tailwind CSS & DaisyUI** – Styling and responsive components  
+- **React Router DOM** – Client-side routing  
+- **Axios** – HTTP requests  
+- **LocalForage** – Local storage caching  
+- **React Hot Toast & React Toastify** – Notifications  
+- **SweetAlert2** – Alerts & confirmations  
+- **Stripe.js** – Payment integration  
+
+### Backend
+
+- **Node.js & Express.js** – Server framework  
+- **MongoDB & Mongoose** – Database & ODM  
+- **Cloudinary** – Image storage and management  
+- **JWT (jsonwebtoken)** – Authentication  
+- **Bcrypt.js** – Password hashing  
+- **Stripe** – Payment processing  
+- **Multer** – File uploads  
+- **CORS & Cookie-parser** – Middleware for API requests  
+
+---
+
+## 📂 Project Structure
+
+### Frontend (`g-martbd`)
+
+g-martbd/
+├─ public/
+├─ src/
+│ ├─ assets/
+│ ├─ components/
+│ ├─ context/
+│ ├─ pages/
+│ └─ App.jsx
+├─ package.json
+└─ vite.config.js
+
+
+### Backend (`g-martbd-server`)
+
+g-martbd-server/
+├─ controllers/
+├─ middlewares/
+├─ models/
+├─ routes/
+├─ server.js
+└─ package.json
 
 
 ---
 
-🚀 Key Features
-🔒 Secure Auth: Full User authentication and authorization (JWT-based).
+## 🚀 Installation
 
-🛍️ Smart Shopping: Product filtering, sorting, and category-based searching.
-
-💳 Dual Payments: Integrated with Stripe for cards and Cash-on-Delivery (COD) .
-
-📦 Order Management: Seamless checkout, wishlist, and user address management.
-
-⚡ Modern UI: Built with React 19, Tailwind CSS, DaisyUI, and PrebuiltUI for a polished feel.
-
-🔔 Real-time Feedback: Toast notifications and SweetAlert2 confirmations.
-
----
-
-🛠️ Tech Stack
-Frontend
-Core: React.js (v19), React Router Dom
-
-Styling: Tailwind CSS, DaisyUI, PrebuiltUI
-
-State & Storage: LocalForage, Axios
-
-UX: React Hot Toast, SweetAlert2
-
-Payments: Stripe.js
-
-Backend
-Runtime: Node.js, Express.js
-
-Database: MongoDB with Mongoose ODM
-
-Storage: Cloudinary (Image Management)
-
-Security: JWT, Bcrypt.js, CORS, Cookie-parser
-
-Utilities: Multer (File uploads)
-
----
-
-G-MartBD/
-├── client/ (Frontend)
-│   ├── src/
-│   │   ├── components/  # Reusable UI elements
-│   │   ├── context/     # Global state management
-│   │   ├── pages/       # Main view components
-│   │   └── assets/      # Styles and images
-│   └── vite.config.js
-└── server/ (Backend)
-    ├── controllers/     # Request logic
-    ├── models/          # Database schemas
-    ├── routes/          # API endpoints
-    ├── middlewares/     # Auth & Error handling
-    └── server.js        # Entry point
-
-   ---
-
-⚙️ Installation & Setup
-Clone the Repository
-
+### 1. Clone the repository
+```bash
 git clone https://github.com/your-username/g-martbd.git
+
+2. Frontend setup
 cd g-martbd
+npm install
+npm run dev
 
-Backend Configuration
+3. Backend setup
 
-Navigate tog-martbd-server
+cd g-martbd-server
+npm install
+npm run server
 
-Create a .envfile:
+Backend runs at http://localhost:3500
 
+🔐 Environment Variables
+Backend .env
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+Frontend .env
+VITE_BACKEND_URL=http://localhost:5000
+VITE_CURRENCY=$
+💻 Scripts
+Frontend
+npm run dev      # Start development server
+npm run build    # Build production
+npm run preview  # Preview production
+npm run lint     # Lint code
+Backend
+npm run start    # Start server
+npm run server   # Start server with nodemon
+🔮 Future Improvements
 
-Run: npm installthennpm run server
+⭐ User reviews & ratings for products
 
+⭐ Advanced AI-based product recommendations
 
-Frontend Configuration
+⭐ Performance optimization & caching
 
-Navigate tog-martbd
+⭐ Deployment with Vercel (frontend) + Render/Heroku (backend)
 
-Create a .envfile:
+📌 Author
 
-VITE_BACKEND_URL=http://localhost:3500
-VITE_CURRENCY=tk
-
-Run: npm installthennpm run dev
-
----
-
-🔮 Future Roadmap
-[ ] AI Search: Implement AI-based product recommendations.
-
-[ ] Social Proof: Add user reviews, star ratings, and photo comments.
-
-[ ] Performance: Introduce Redis caching and code-splitting for faster loads.
-
-[ ] Admin Dashboard: Advanced analytics for sales and inventory.
-
----
-
-👤 Author
-Amit Sarkar
-
-Full-stack Developer
-
-GitHub : https://github.com/Amitkumersarkar|LinkedIn : https://www.linkedin.com/in/amit-sarkar-63504b252/
+Amit Sarkar – Full-stack developer
 
 📄 License
-This project is licensed under the ISC License .
+
+This project is licensed under the ISC License.

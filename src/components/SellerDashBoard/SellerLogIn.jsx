@@ -20,7 +20,7 @@ const SellerLogIn = () => {
 
             if (data.success) {
                 setIsSeller(true)
-                toast.success("Seller login successful 🚀")
+                toast.success("Seller login successful")
             } else {
                 toast.error(data.message)
             }

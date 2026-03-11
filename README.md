@@ -2,9 +2,17 @@
 
 [![React](https://img.shields.io/badge/React-19.2-blue?logo=react)](https://reactjs.org/)  
 [![Node.js](https://img.shields.io/badge/Node.js-18.16-green?logo=node.js)](https://nodejs.org/)  
+[![Express](https://img.shields.io/badge/Express-5.2.1-lightgrey?logo=express)](https://expressjs.com/)  
+[![Mongoose](https://img.shields.io/badge/Mongoose-9.2.3-red)](https://mongoosejs.com/)  
 [![MongoDB](https://img.shields.io/badge/MongoDB-7.1.0-brightgreen?logo=mongodb)](https://www.mongodb.com/)  
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.18-blue?logo=tailwind-css)](https://tailwindcss.com/)  
-[![Stripe](https://img.shields.io/badge/Stripe-Payment-purple?logo=stripe)](https://stripe.com/)  
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-2.9.0-orange)](https://cloudinary.com/)  
+[![JWT](https://img.shields.io/badge/JWT-9.0.3-yellow)](https://jwt.io/)  
+[![Bcrypt.js](https://img.shields.io/badge/Bcrypt-3.0.3-blue)](https://www.npmjs.com/package/bcryptjs)  
+[![Multer](https://img.shields.io/badge/Multer-2.1.0-lightblue)](https://www.npmjs.com/package/multer)  
+[![Cors](https://img.shields.io/badge/CORS-2.8.6-green)](https://www.npmjs.com/package/cors)  
+[![Cookie Parser](https://img.shields.io/badge/Cookie_Parser-1.4.7-lightgreen)](https://www.npmjs.com/package/cookie-parser)  
+[![Stripe](https://img.shields.io/badge/Stripe-20.4.0-purple)](https://stripe.com/)
 
 **G-MartBD** is a full-stack MERN e-commerce platform for online shopping. Users can browse products, manage carts, place orders, and make payments securely. The project features a modern responsive UI with advanced functionality for a complete shopping experience.
 

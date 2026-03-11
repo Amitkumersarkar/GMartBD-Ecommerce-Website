@@ -25,20 +25,23 @@
 ## 🖥️ Screenshots
 
 ### Home Page
-![Home Page](https://via.placeholder.com/800x400.png?text=Home+Page)
+![Home Page]((https://i.ibb.co.com/SDFPbQL3/image.png))
+![Home Page](https://i.ibb.co.com/C5SZJ14k/image.png)
+![Home Page](https://i.ibb.co.com/Y4G2YfhF/image.png)
+![Home Page](https://i.ibb.co.com/WpRnSDFr/image.png)
 
 ### Product Listing
-![Product Listing](https://via.placeholder.com/800x400.png?text=Product+Listing)
+![Product Listing](https://i.ibb.co.com/hFzJBZ78/image.png)
 
 ### Cart & Checkout
-![Cart & Checkout](https://via.placeholder.com/800x400.png?text=Cart+%26+Checkout)
+![Cart & Checkout](https://i.ibb.co.com/YBhZFpQM/image.png)
 
 ---
 
 ## 🔗 Live Demo
 
-- **Frontend:** [https://your-frontend-demo.vercel.app]([https://your-frontend-demo.vercel.app](https://g-martbd.vercel.app/))  
-- **Backend:** [https://your-backend-demo.onrender.com]([https://your-backend-demo.onrender.com)](https://g-mart-bd-server.vercel.app/)
+- **Frontend:** [https://your-frontend-demo.vercel.app]((https://g-martbd.vercel.app/))  
+- **Backend:** [https://your-backend-demo.onrender.com](https://g-mart-bd-server.vercel.app/)
 
 ---
 
@@ -114,6 +117,8 @@ cd g-martbd-server
 npm install
 npm run server
 
+----
+
 Backend runs at http://localhost:3500
 
 🔐 Environment Variables
@@ -136,6 +141,10 @@ npm run lint     # Lint code
 Backend
 npm run start    # Start server
 npm run server   # Start server with nodemon
+
+----
+
+
 🔮 Future Improvements
 
 ⭐ User reviews & ratings for products
@@ -145,6 +154,9 @@ npm run server   # Start server with nodemon
 ⭐ Performance optimization & caching
 
 ⭐ Deployment with Vercel (frontend) + Render/Heroku (backend)
+
+
+----
 
 📌 Author
 
